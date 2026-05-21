@@ -1,12 +1,121 @@
+cat > index.html <<'EOF'
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Apgujam Salon</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Apgujam Music Studio | Jamming & Music Lessons</title>
+  <meta name="description" content="Apgujam Music Studio offers music jamming sessions, guitar, vocal, piano, and beginner-friendly music lessons." />
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <h1>Apgujam Salon</h1>
-  <p>Welcome to Apgujam Salon.</p>
-  <p>Email us at: <a href="mailto:sales@niceday.co.kr">sales@niceday.co.kr</a></p>
+
+<header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="#">
+      <img src="images/logo.svg" alt="Apgujam Music Studio Logo" />
+      <span>Apgujam Music Studio</span>
+    </a>
+
+    <nav>
+      <a href="#lessons">Lessons</a>
+      <a href="#jamming">Jamming</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-text">
+        <p class="eyebrow">Music Lessons · Jamming · Practice Studio</p>
+        <h1>Learn, play, and jam with confidence.</h1>
+        <p class="hero-desc">
+          A friendly music space for beginners, hobby musicians, and small groups.
+          Join private lessons, band-style jamming, and guided practice sessions.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn primary" href="#contact">Book a Trial Lesson</a>
+          <a class="btn secondary" href="#lessons">View Programs</a>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <img src="images/hero-music.svg" alt="Music jamming illustration" />
+      </div>
+    </div>
+  </section>
+
+  <section id="lessons" class="section">
+    <div class="container">
+      <div class="section-title">
+        <p class="eyebrow">Our Lessons</p>
+        <h2>Choose your music path</h2>
+      </div>
+
+      <div class="cards">
+        <article class="card">
+          <h3>Guitar Lessons</h3>
+          <p>Learn chords, rhythm, strumming, fingerstyle, and your favorite songs.</p>
+        </article>
+
+        <article class="card">
+          <h3>Vocal Coaching</h3>
+          <p>Improve pitch, breathing, confidence, song expression, and performance.</p>
+        </article>
+
+        <article class="card">
+          <h3>Piano Basics</h3>
+          <p>Beginner-friendly piano lessons for melody, chords, and music reading.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="jamming" class="section dark">
+    <div class="container split">
+      <div>
+        <p class="eyebrow">Jamming Sessions</p>
+        <h2>Play together, not alone.</h2>
+        <p>
+          Our jamming sessions help students experience real music collaboration.
+          Perfect for friends, small bands, and learners who want to build stage confidence.
+        </p>
+      </div>
+
+      <div class="info-box">
+        <h3>Sample Programs</h3>
+        <ul>
+          <li>Beginner Jam Class</li>
+          <li>Weekend Band Practice</li>
+          <li>Private 1:1 Lesson</li>
+          <li>Monthly Performance Practice</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section contact">
+    <div class="container contact-box">
+      <p class="eyebrow">Contact Us</p>
+      <h2>Ready to start?</h2>
+      <p>Send us a message and ask about available lesson times.</p>
+
+      <a class="email-link" href="mailto:sales@niceday.co.kr">
+        sales@niceday.co.kr
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>© 2026 Apgujam Music Studio. All rights reserved.</p>
+  </div>
+</footer>
+
 </body>
 </html>
+EOF
