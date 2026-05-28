@@ -3,1078 +3,1110 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>압구잼살롱 | 잼 세션 & 음악 레슨</title>
-  <meta name="description" content="압구잼살롱은 1:1 개인 레슨, 그룹 클래스, 잼 세션, 밴드 프로그램, 이벤트, 연습실 대여를 제공합니다." />
-  <link rel="icon" type="image/svg+xml" href="images/logo.svg" />
+  <title>APGU JAM SALON | 8 Week Band Project</title>
+  <meta name="description" content="APGU JAM SALON 8주 밴드 프로젝트. 낯선 사람들과 밴드가 되어 무대까지 경험하는 실전 음악 프로그램." />
+  <link rel="icon" type="image/png" href="images/blacklogo.png" />
 
   <style>
     :root {
-      --bg: #fff8f0;
-      --bg-soft: #fffdf8;
-      --text: #222222;
-      --muted: #666666;
-      --primary: #d97706;
-      --primary-dark: #b45309;
-      --secondary: #1f2937;
-      --card: #ffffff;
-      --border: #eadfce;
-      --success: #15803d;
-      --danger: #b91c1c;
-      --shadow: 0 16px 40px rgba(31, 41, 55, 0.10);
-      --radius: 22px;
+      --black: #080806;
+      --black2: #15120d;
+      --paper: #f2dfbd;
+      --paper2: #ead0a0;
+      --orange: #f15a24;
+      --orange2: #ff7a1a;
+      --green: #19482f;
+      --green2: #2fbf66;
+      --cream: #fff2d2;
+      --white: #ffffff;
+      --muted: #b7aa91;
+      --line: rgba(255,255,255,.14);
+      --paper-line: rgba(44, 31, 16, .18);
+      --shadow: 0 22px 70px rgba(0,0,0,.45);
+      --font-main: Arial, Helvetica, sans-serif;
     }
 
     * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
-      font-family: "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", Arial, Helvetica, sans-serif;
-      color: var(--text);
-      background: var(--bg);
-      line-height: 1.6;
+      font-family: var(--font-main);
+      color: var(--cream);
+      background:
+        radial-gradient(circle at 20% 0%, rgba(241,90,36,.24), transparent 34%),
+        radial-gradient(circle at 85% 20%, rgba(255,122,26,.16), transparent 30%),
+        linear-gradient(180deg, #090907 0%, #15120d 45%, #080806 100%);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+      opacity: .2;
+      background-image:
+        linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+      background-size: 28px 28px;
+      mask-image: radial-gradient(circle at center, black, transparent 82%);
     }
 
     a { color: inherit; text-decoration: none; }
     img { max-width: 100%; display: block; }
 
     .container {
-      width: min(1120px, calc(100% - 32px));
+      width: min(1180px, calc(100% - 36px));
       margin: 0 auto;
     }
 
+    .rough { position: relative; display: inline-block; }
+    .rough::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -9px;
+      height: 8px;
+      background: var(--orange);
+      transform: rotate(-1deg);
+      border-radius: 20px;
+    }
+
     .site-header {
-      position: sticky;
+      position: fixed;
       top: 0;
-      z-index: 10;
-      background: rgba(255, 248, 240, 0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
+      left: 0;
+      right: 0;
+      z-index: 50;
+      background: linear-gradient(180deg, rgba(0,0,0,.85), rgba(0,0,0,.15));
+      backdrop-filter: blur(8px);
     }
 
     .nav {
-      min-height: 72px;
+      min-height: 78px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 20px;
-    }
-
-    .brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      font-weight: 800;
-      font-size: 18px;
+      gap: 24px;
     }
 
     .brand img {
-      width: 44px;
-      height: 44px;
+      width: 70px;
+      height: 70px;
+      object-fit: contain;
     }
 
-    nav {
+    .nav-links {
       display: flex;
-      gap: 18px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-      font-size: 14px;
-      color: var(--secondary);
-      font-weight: 700;
-    }
-
-    nav a:hover { color: var(--primary); }
-
-    .hero {
-      padding: 86px 0 70px;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 40px;
       align-items: center;
-    }
-
-    .eyebrow {
-      color: var(--primary);
-      font-weight: 800;
-      letter-spacing: 0.08em;
+      gap: 30px;
+      font-weight: 900;
+      font-size: 15px;
       text-transform: uppercase;
-      font-size: 13px;
-      margin: 0 0 10px;
+      letter-spacing: .05em;
     }
 
-    h1, h2, h3 {
-      line-height: 1.15;
-      margin: 0;
-    }
+    .nav-links a:hover,
+    .nav-links a.active { color: #ffd37c; }
 
-    h1 {
-      font-size: clamp(42px, 7vw, 76px);
-      letter-spacing: -0.05em;
-    }
-
-    h2 {
-      font-size: clamp(30px, 4vw, 46px);
-      letter-spacing: -0.04em;
-    }
-
-    h3 {
-      font-size: 21px;
-      letter-spacing: -0.02em;
-    }
-
-    .hero-desc {
-      margin: 24px 0 0;
-      max-width: 620px;
-      font-size: 19px;
-      color: var(--muted);
-    }
-
-    .hero-actions,
-    .contact-actions,
-    .payment-actions {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-top: 28px;
-    }
-
+    .nav-cta,
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      gap: 10px;
       border: 0;
-      border-radius: 999px;
-      padding: 13px 20px;
-      min-height: 48px;
-      font-weight: 800;
       cursor: pointer;
-      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
-      font-size: 15px;
+      font-weight: 950;
+      letter-spacing: .03em;
+      text-transform: uppercase;
+      color: #111;
+      background: var(--orange2);
+      min-height: 46px;
+      padding: 0 24px;
+      box-shadow: 4px 4px 0 rgba(0,0,0,.6);
+      transform: rotate(-1deg);
+      transition: transform .16s ease, filter .16s ease;
+      clip-path: polygon(4% 0, 100% 0, 96% 100%, 0 100%);
     }
 
+    .nav-cta:hover,
     .btn:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 10px 24px rgba(31, 41, 55, 0.12);
+      transform: translateY(-2px) rotate(-1deg);
+      filter: brightness(1.08);
     }
 
-    .btn.primary {
-      background: var(--primary);
-      color: #ffffff;
+    .btn.dark {
+      background: #101010;
+      color: var(--cream);
+      border: 1px solid rgba(255,255,255,.2);
     }
 
-    .btn.primary:hover { background: var(--primary-dark); }
-
-    .btn.secondary {
-      background: #ffffff;
-      color: var(--secondary);
-      border: 1px solid var(--border);
+    .btn.light {
+      background: var(--cream);
+      color: #111;
     }
 
-    .btn.small {
-      min-height: 40px;
-      padding: 9px 14px;
-      font-size: 14px;
+    .hero {
+      min-height: 850px;
+      padding: 115px 0 70px;
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.92), rgba(0,0,0,.42), rgba(0,0,0,.68)),
+        radial-gradient(circle at 70% 42%, rgba(255,122,26,.38), transparent 30%),
+        linear-gradient(135deg, #111 0%, #21120b 55%, #090909 100%);
     }
 
-    .btn:disabled {
-      cursor: default;
-      opacity: 0.68;
-      transform: none;
-      box-shadow: none;
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: .28;
+      background:
+        radial-gradient(circle at 72% 48%, transparent 0 15%, rgba(255,255,255,.16) 15.2% 15.6%, transparent 15.8%),
+        linear-gradient(120deg, transparent 0 58%, rgba(255,122,26,.16) 58.2% 59%, transparent 59.2%),
+        repeating-linear-gradient(0deg, rgba(255,255,255,.055) 0 1px, transparent 1px 7px);
+      mix-blend-mode: screen;
     }
 
-    .hero-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 34px;
-      padding: 28px;
-      box-shadow: var(--shadow);
+    .hero-stage {
+      position: absolute;
+      right: 0;
+      top: 96px;
+      width: min(64vw, 820px);
+      height: 540px;
+      opacity: .95;
+      background:
+        radial-gradient(circle at 50% 65%, rgba(255,222,139,.8), transparent 9%),
+        radial-gradient(circle at 28% 52%, rgba(241,90,36,.55), transparent 18%),
+        radial-gradient(circle at 70% 42%, rgba(241,90,36,.5), transparent 18%),
+        linear-gradient(160deg, rgba(255,255,255,.06), rgba(255,255,255,.01));
+      border-left: 1px solid rgba(255,255,255,.08);
+      clip-path: polygon(9% 0, 100% 0, 100% 100%, 0 100%, 6% 40%);
     }
 
-    .section {
-      padding: 74px 0;
+    .hero-stage::before {
+      content: "ROCK & ROLL\A LIVE PUB";
+      white-space: pre;
+      position: absolute;
+      right: 150px;
+      top: 70px;
+      color: #ff4a1d;
+      font-size: 34px;
+      line-height: 1.05;
+      letter-spacing: .08em;
+      text-align: center;
+      text-shadow: 0 0 18px rgba(255,74,29,.9);
+      transform: rotate(-3deg);
     }
 
-    .section-title {
-      max-width: 780px;
-      margin-bottom: 28px;
-    }
-
-    .section-title p.description {
-      color: var(--muted);
-      font-size: 18px;
-      margin: 16px 0 0;
-    }
-
-    .program-group {
-      margin-top: 36px;
-    }
-
-    .program-group-title {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
+    .stage-icons {
+      position: absolute;
+      left: 22%;
+      right: 7%;
+      bottom: 70px;
+      height: 210px;
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      align-items: end;
       gap: 14px;
+      opacity: .9;
+    }
+
+    .amp,
+    .drum,
+    .stand {
+      background: rgba(0,0,0,.64);
+      border: 2px solid rgba(255,255,255,.18);
+      box-shadow: inset 0 0 0 2px rgba(255,122,26,.12);
+    }
+
+    .amp {
+      height: 72px;
+      border-radius: 6px;
+      position: relative;
+    }
+
+    .amp::before {
+      content: "Blackstar";
+      position: absolute;
+      top: 8px;
+      left: 9px;
+      color: #e1c99d;
+      font-size: 10px;
+      font-style: italic;
+    }
+
+    .drum {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      justify-self: center;
+      background:
+        radial-gradient(circle, rgba(255,244,216,.9) 0 38%, rgba(0,0,0,.72) 39% 42%, rgba(255,244,216,.8) 43% 100%);
+    }
+
+    .stand {
+      width: 8px;
+      height: 170px;
+      justify-self: center;
+      transform: rotate(5deg);
+      border-radius: 20px;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 640px;
+    }
+
+    .hero-logo {
+      width: 154px;
+      margin-bottom: 34px;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(52px, 8vw, 104px);
+      line-height: .88;
+      letter-spacing: -.06em;
+      font-weight: 1000;
+      text-transform: uppercase;
+      color: #fff6de;
+      text-shadow: 6px 6px 0 rgba(0,0,0,.55);
+      transform: rotate(-2deg);
+    }
+
+    .hero h1 span { color: var(--green2); }
+
+    .hero-sub {
+      margin-top: 42px;
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      flex-wrap: wrap;
+    }
+
+    .hero-sub strong {
+      font-size: 24px;
+      font-weight: 950;
+      text-transform: uppercase;
+    }
+
+    .sticker {
+      position: absolute;
+      right: 55px;
+      bottom: 74px;
+      z-index: 3;
+      background: var(--cream);
+      color: #1c321f;
+      border: 8px solid #d8c497;
+      border-radius: 10px;
+      padding: 16px 22px;
+      transform: rotate(6deg);
+      font-weight: 1000;
+      font-size: 30px;
+      line-height: 1;
+      text-transform: uppercase;
+      box-shadow: 10px 12px 0 rgba(0,0,0,.45);
+    }
+
+    .sticker span { color: var(--orange); }
+
+    .paper-section {
+      background: var(--paper);
+      color: #17120d;
+      position: relative;
+      margin-top: -40px;
+      padding: 76px 0 62px;
+      clip-path: polygon(0 2%, 10% 0, 25% 2%, 44% 0, 65% 3%, 82% 1%, 100% 4%, 100% 96%, 85% 100%, 68% 97%, 51% 100%, 35% 96%, 17% 100%, 0 96%);
+    }
+
+    .paper-section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: .2;
+      background:
+        linear-gradient(90deg, rgba(90,52,20,.25) 1px, transparent 1px),
+        linear-gradient(rgba(90,52,20,.2) 1px, transparent 1px);
+      background-size: 26px 26px;
+      pointer-events: none;
+    }
+
+    .about-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 42px;
+      align-items: center;
+    }
+
+    .label {
+      display: inline-block;
+      background: #244a2f;
+      color: var(--cream);
+      padding: 8px 16px;
+      font-weight: 1000;
+      text-transform: uppercase;
+      transform: rotate(-4deg);
+      box-shadow: 4px 4px 0 rgba(0,0,0,.22);
       margin-bottom: 18px;
     }
 
-    .program-group-title h3 {
-      font-size: 25px;
+    .script-title {
+      font-size: clamp(42px, 6vw, 78px);
+      line-height: .93;
+      letter-spacing: -.05em;
+      margin: 0 0 24px;
+      transform: rotate(-3deg);
+      font-weight: 1000;
     }
 
-    .program-grid {
+    .script-title em {
+      color: var(--orange);
+      font-style: normal;
+      text-decoration: underline;
+      text-decoration-thickness: 5px;
+    }
+
+    .photo-frame {
+      background: #111;
+      border: 10px solid #f6e4bf;
+      box-shadow: 10px 12px 0 rgba(0,0,0,.25);
+      padding: 8px;
+      transform: rotate(-3deg);
+      min-height: 280px;
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
+      place-items: center;
+      color: #fff;
+      overflow: hidden;
     }
 
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 22px;
-      box-shadow: 0 10px 28px rgba(31, 41, 55, 0.06);
+    .photo-frame::before {
+      content: "";
+      width: 100%;
+      height: 100%;
+      min-height: 245px;
+      background:
+        radial-gradient(circle at 22% 46%, #eee 0 3%, transparent 3.3%),
+        radial-gradient(circle at 42% 50%, #eee 0 3%, transparent 3.3%),
+        radial-gradient(circle at 63% 43%, #eee 0 3%, transparent 3.3%),
+        radial-gradient(circle at 82% 55%, #eee 0 3%, transparent 3.3%),
+        linear-gradient(145deg, #050505, #333 52%, #080808);
+      filter: grayscale(1);
+      opacity: .92;
     }
 
-    .card.featured {
-      border-color: rgba(217, 119, 6, 0.38);
-      box-shadow: var(--shadow);
-    }
-
-    .tag-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 14px;
-    }
-
-    .tag {
-      display: inline-flex;
-      border-radius: 999px;
-      padding: 5px 10px;
-      background: #fff3df;
-      color: var(--primary-dark);
-      font-size: 12px;
+    .about-copy {
+      font-size: 18px;
       font-weight: 800;
+      max-width: 520px;
+      margin-bottom: 24px;
     }
 
-    .tag.dark {
-      background: #f3f4f6;
-      color: #374151;
-    }
-
-    .card p {
-      color: var(--muted);
-      margin: 12px 0 0;
-    }
-
-    .program-meta {
-      list-style: none;
-      padding: 0;
-      margin: 18px 0 0;
+    .feature-grid {
       display: grid;
-      gap: 8px;
-      font-size: 14px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
     }
 
-    .program-meta li {
-      display: flex;
-      gap: 8px;
+    .feature {
+      border: 1px solid var(--paper-line);
+      background: rgba(255,255,255,.22);
+      padding: 18px;
+      min-height: 152px;
+      border-radius: 4px;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.18);
     }
 
-    .program-meta strong {
-      min-width: 86px;
-      color: var(--secondary);
+    .feature-num {
+      color: var(--orange);
+      font-size: 22px;
+      font-weight: 1000;
+      margin-bottom: 8px;
     }
 
-    .price-box {
-      margin-top: 18px;
-      border-radius: 16px;
-      background: #fff8ed;
-      border: 1px dashed #e3b671;
-      padding: 14px;
+    .feature strong {
+      display: block;
+      font-size: 17px;
+      margin-bottom: 8px;
     }
 
-    .price-hidden {
-      color: var(--muted);
+    .feature p {
+      margin: 0;
+      font-size: 13px;
+      color: #4c3b2d;
       font-weight: 700;
     }
 
-    .price-revealed {
-      display: none;
-      color: var(--secondary);
-      font-weight: 800;
+    .dark-section {
+      padding: 72px 0;
+      position: relative;
+      overflow: hidden;
     }
 
-    .price-revealed.active { display: block; }
-    .price-hidden.hidden { display: none; }
+    .dark-section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 8% 45%, rgba(241,90,36,.35), transparent 16%),
+        radial-gradient(circle at 92% 25%, rgba(244,184,45,.16), transparent 20%);
+      pointer-events: none;
+    }
 
-    .card-actions {
+    .section-head {
+      position: relative;
+      z-index: 1;
       display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 16px;
-    }
-
-    .membership-section {
-      background: var(--bg-soft);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .membership-box {
-      background: #1f2937;
-      color: #ffffff;
-      border-radius: 32px;
-      padding: 38px;
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 28px;
       align-items: center;
-      box-shadow: var(--shadow);
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 28px;
     }
 
-    .membership-box .eyebrow { color: #fbbf24; }
-
-    .membership-box p {
-      color: rgba(255, 255, 255, 0.78);
-      margin: 16px 0 0;
-      font-size: 17px;
-    }
-
-    .benefit-list {
-      list-style: none;
-      padding: 0;
+    .section-head h2 {
+      font-size: 44px;
       margin: 0;
-      display: grid;
-      gap: 12px;
+      text-transform: uppercase;
+      color: var(--cream);
+      font-weight: 1000;
+      transform: rotate(-2deg);
     }
 
-    .benefit-list li {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 16px;
-      padding: 13px 15px;
-      color: rgba(255, 255, 255, 0.88);
-    }
-
-    .payment-section { background: #ffffff; }
-
-    .payment-grid {
-      display: grid;
-      grid-template-columns: 0.95fr 1.05fr;
-      gap: 30px;
-      align-items: start;
-    }
-
-    .payment-panel {
-      background: var(--bg-soft);
-      border: 1px solid var(--border);
-      border-radius: 28px;
-      padding: 28px;
-      box-shadow: var(--shadow);
-    }
-
-    .form-grid {
+    .program-cards {
+      position: relative;
+      z-index: 1;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 14px;
-      margin-top: 22px;
-    }
-
-    .field {
-      display: grid;
-      gap: 7px;
-    }
-
-    .field.full { grid-column: 1 / -1; }
-
-    label {
-      font-weight: 800;
-      font-size: 14px;
-      color: var(--secondary);
-    }
-
-    input, select {
-      width: 100%;
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      min-height: 48px;
-      padding: 10px 13px;
-      font-size: 15px;
-      background: #ffffff;
-      color: var(--text);
-    }
-
-    input:focus, select:focus {
-      outline: 3px solid rgba(217, 119, 6, 0.16);
-      border-color: var(--primary);
-    }
-
-    .form-message {
-      display: none;
-      margin-top: 14px;
-      padding: 12px 14px;
-      border-radius: 14px;
-      font-weight: 700;
-      font-size: 14px;
-    }
-
-    .form-message.error {
-      display: block;
-      background: #fef2f2;
-      color: var(--danger);
-      border: 1px solid #fecaca;
-    }
-
-    .form-message.success {
-      display: block;
-      background: #f0fdf4;
-      color: var(--success);
-      border: 1px solid #bbf7d0;
-    }
-
-    .payment-info {
-      display: none;
-      margin-top: 24px;
-      grid-column: 1 / -1;
-      background: #ffffff;
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      padding: 22px;
-    }
-
-    .payment-info.active {
-      display: grid;
-      grid-template-columns: 180px 1fr;
-      gap: 22px;
-      align-items: center;
-    }
-
-    .qr-card {
-      background: #fff8ed;
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 16px;
-      text-align: center;
-    }
-
-    .qr-card img {
-      width: 150px;
-      height: 150px;
+      gap: 30px;
+      max-width: 900px;
       margin: 0 auto;
     }
 
-    .bank-details {
-      list-style: none;
-      padding: 0;
-      margin: 14px 0 0;
-      display: grid;
-      gap: 8px;
+    .program-card {
+      background: var(--paper);
+      color: #16110c;
+      border: 5px solid #272113;
+      box-shadow: 10px 12px 0 rgba(0,0,0,.45);
+      transform: rotate(-1deg);
+      overflow: hidden;
     }
 
-    .bank-details li {
+    .program-card:nth-child(2) { transform: rotate(1deg); }
+
+    .program-top {
       display: flex;
-      gap: 8px;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      padding: 22px 26px;
+      border-bottom: 2px dashed rgba(0,0,0,.25);
     }
 
-    .bank-details strong { min-width: 110px; }
-
-    .note {
-      color: var(--muted);
-      font-size: 14px;
-      margin-top: 14px;
+    .program-card.premium .program-top {
+      background: var(--orange);
+      color: #100c08;
     }
 
-    .contact { background: var(--bg); }
+    .program-card h3 {
+      margin: 0;
+      font-size: 36px;
+      letter-spacing: -.04em;
+      text-transform: uppercase;
+      font-weight: 1000;
+    }
 
-    .contact-box {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 32px;
-      padding: 42px;
+    .price-pill {
+      background: #111;
+      color: var(--cream);
+      padding: 8px 15px;
+      font-weight: 1000;
+      border-radius: 3px;
+      white-space: nowrap;
+    }
+
+    .program-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      padding: 18px 20px 24px;
+    }
+
+    .program-list div {
+      min-height: 88px;
+      border-right: 1px dashed rgba(0,0,0,.24);
+      border-bottom: 1px dashed rgba(0,0,0,.24);
+      padding: 14px 10px;
       text-align: center;
-      box-shadow: var(--shadow);
+      font-weight: 900;
+      font-size: 14px;
     }
 
-    .contact-box p {
-      color: var(--muted);
-      font-size: 17px;
+    .program-list div:nth-child(3n) { border-right: 0; }
+    .program-list div:nth-last-child(-n + 3) { border-bottom: 0; }
+
+    .icon {
+      width: 36px;
+      height: 36px;
+      margin: 0 auto 8px;
+      border: 3px solid currentColor;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 18px;
     }
 
-    .contact-actions { justify-content: center; }
-
-    .contact-detail {
-      margin-top: 22px;
-      font-size: 15px;
+    .apply-band {
+      background:
+        linear-gradient(90deg, rgba(241,90,36,.98), rgba(241,90,36,.88)),
+        repeating-linear-gradient(45deg, transparent 0 12px, rgba(0,0,0,.15) 12px 13px);
+      padding: 54px 0;
+      color: #111;
+      position: relative;
     }
 
-    .contact-detail a {
-      color: var(--primary-dark);
+    .apply-grid {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .apply-band h2 {
+      margin: 0;
+      font-size: 58px;
+      letter-spacing: -.06em;
+      font-weight: 1000;
+      transform: rotate(-3deg);
+    }
+
+    .apply-band p {
+      font-weight: 900;
+      margin: 8px 0 22px;
+    }
+
+    .mini-photos {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .mini-photo {
+      min-height: 160px;
+      background:
+        radial-gradient(circle at 25% 48%, rgba(255,255,255,.85) 0 5%, transparent 5.4%),
+        radial-gradient(circle at 55% 42%, rgba(255,255,255,.8) 0 4%, transparent 4.4%),
+        radial-gradient(circle at 76% 52%, rgba(255,255,255,.7) 0 4%, transparent 4.4%),
+        linear-gradient(140deg, #24150d, #090909 70%);
+      border: 8px solid #e7d1a8;
+      box-shadow: 8px 8px 0 rgba(0,0,0,.4);
+      transform: rotate(3deg);
+    }
+
+    .mini-photo:nth-child(2) { transform: rotate(-3deg); }
+
+    .clips {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 18px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .clip-card {
+      background: #151515;
+      border: 2px solid rgba(255,244,216,.22);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 6px 8px 0 rgba(0,0,0,.4);
+    }
+
+    .clip-thumb {
+      min-height: 122px;
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(circle at 50% 42%, rgba(255,122,26,.65), transparent 15%),
+        linear-gradient(135deg, #090909, #38200e 70%);
+      filter: grayscale(.25);
+    }
+
+    .play {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.88);
+      color: #111;
+      display: grid;
+      place-items: center;
+      font-weight: 1000;
+      font-size: 22px;
+    }
+
+    .clip-card strong {
+      display: block;
+      padding: 12px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .bottom-panels {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 1.15fr 1.15fr;
+      gap: 24px;
+      margin-top: 42px;
+    }
+
+    .panel {
+      border: 2px solid rgba(255,210,124,.25);
+      background: rgba(40, 61, 37, .82);
+      padding: 30px;
+      min-height: 220px;
+      box-shadow: 8px 10px 0 rgba(0,0,0,.35);
+    }
+
+    .panel.event {
+      background: var(--orange);
+      color: #111;
+    }
+
+    .panel h3 {
+      margin: 0 0 12px;
+      font-size: 38px;
+      text-transform: uppercase;
+      font-weight: 1000;
+    }
+
+    .panel p {
+      margin: 0 0 20px;
       font-weight: 800;
+      color: inherit;
+      opacity: .92;
+    }
+
+    .event-icons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .event-icons div {
+      text-align: center;
+      font-weight: 900;
+      font-size: 13px;
+    }
+
+    .event-icons span {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      margin: 0 auto 8px;
+      background: #171717;
+      color: var(--orange2);
+      display: grid;
+      place-items: center;
+      font-size: 23px;
+    }
+
+    .members-btn {
+      background: var(--paper);
+      color: #111;
     }
 
     .site-footer {
-      border-top: 1px solid var(--border);
-      padding: 24px 0;
+      border-top: 1px solid var(--line);
+      padding: 36px 0;
+      background: rgba(0,0,0,.46);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: .7fr 1fr 1fr 1fr;
+      gap: 26px;
+      align-items: center;
       color: var(--muted);
       font-size: 14px;
-      text-align: center;
     }
 
-    @media (max-width: 920px) {
-      .hero-grid,
-      .payment-grid,
-      .membership-box {
-        grid-template-columns: 1fr;
-      }
+    .footer-logo { width: 90px; }
 
-      .program-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
+    .sns {
+      display: flex;
+      gap: 12px;
+      margin-top: 10px;
     }
 
-    @media (max-width: 640px) {
-      .nav {
-        align-items: flex-start;
-        flex-direction: column;
-        padding: 14px 0;
+    .sns a {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.12);
+      display: grid;
+      place-items: center;
+      color: var(--cream);
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: 1px solid var(--line);
+      color: var(--cream);
+      padding: 10px 12px;
+      font-weight: 900;
+    }
+
+    @media (max-width: 980px) {
+      .nav-links { display: none; }
+      .mobile-menu-btn { display: inline-flex; }
+      .hero { min-height: auto; }
+      .hero-stage { opacity: .36; width: 100%; top: 120px; }
+      .sticker {
+        position: relative;
+        right: auto;
+        bottom: auto;
+        display: inline-block;
+        margin: 40px 0 0 18px;
       }
+      .about-grid,
+      .apply-grid,
+      .program-cards,
+      .bottom-panels,
+      .footer-grid { grid-template-columns: 1fr; }
+      .feature-grid { grid-template-columns: repeat(2, 1fr); }
+      .clips { grid-template-columns: repeat(2, 1fr); }
+    }
 
-      nav { justify-content: flex-start; }
-
-      .hero { padding-top: 54px; }
-
-      .program-grid,
-      .form-grid {
-        grid-template-columns: 1fr;
+    @media (max-width: 620px) {
+      .brand img { width: 56px; height: 56px; }
+      .nav { min-height: 68px; }
+      .hero { padding-top: 92px; }
+      .hero-logo { width: 118px; }
+      .hero-sub strong { font-size: 18px; }
+      .sticker { font-size: 22px; }
+      .feature-grid,
+      .program-list,
+      .clips,
+      .event-icons { grid-template-columns: 1fr; }
+      .program-list div,
+      .program-list div:nth-child(3n),
+      .program-list div:nth-last-child(-n + 3) {
+        border-right: 0;
+        border-bottom: 1px dashed rgba(0,0,0,.24);
       }
-
-      .payment-info.active {
-        grid-template-columns: 1fr;
-      }
-
-      .membership-box,
-      .contact-box {
-        padding: 26px;
-      }
+      .program-list div:last-child { border-bottom: 0; }
+      .section-head h2,
+      .apply-band h2 { font-size: 42px; }
     }
   </style>
 </head>
 
 <body>
+  <header class="site-header">
+    <div class="container nav">
+      <a href="#" class="brand" aria-label="APGU JAM SALON Home">
+        <img src="images/whitelogo.png" alt="APGU JAM SALON logo" />
+      </a>
 
-<header class="site-header">
-  <div class="container nav">
-    <a class="brand" href="#">
-      <img src="images/logo.svg" alt="압구잼살롱 로고" />
-      <span>압구잼살롱</span>
-    </a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#about">ABOUT</a>
+        <a href="#program">PROGRAM</a>
+        <a href="#apply">APPLY</a>
+        <a href="#clip">CLIP</a>
+        <a href="#faq">FAQ</a>
+        <a href="#event">EVENT</a>
+        <a href="#members">MEMBERS ONLY</a>
+      </nav>
 
-    <nav>
-      <a href="#programs">프로그램</a>
-      <a href="#membership">멤버십</a>
-      <a href="#payment">결제</a>
-      <a href="#contact">문의</a>
-    </nav>
-  </div>
-</header>
+      <a class="nav-cta" href="https://forms.gle/REPLACE_THIS_WITH_YOUR_GOOGLE_FORM" target="_blank" rel="noopener noreferrer">
+        SIGN UP
+      </a>
 
-<main>
-  <section class="hero">
-    <div class="container hero-grid">
-      <div class="hero-text">
-        <p class="eyebrow">잼 세션 · 음악 레슨 · 밴드 프로그램</p>
-        <h1>압구잼살롱</h1>
-        <p class="hero-desc">
-          음악을 배우고, 연습하고, 함께 즐길 수 있는 편안한 창작 공간입니다.
-          1:1 개인 레슨, 그룹 클래스, 가이드 잼 세션, 밴드 프로그램,
-          커뮤니티 이벤트, 연습실 이용까지 함께 경험해 보세요.
-        </p>
-
-        <div class="hero-actions">
-          <a class="btn primary" href="#programs">프로그램 보기</a>
-          <a class="btn secondary" href="#membership">멤버십 가입</a>
-        </div>
-      </div>
-
-      <div class="hero-card">
-        <img src="images/hero-music.svg" alt="압구잼살롱 음악 레슨 이미지" />
-      </div>
+      <button class="mobile-menu-btn" type="button" onclick="document.body.classList.toggle('menu-open')">
+        MENU
+      </button>
     </div>
-  </section>
+  </header>
 
-  <section id="programs" class="section">
-    <div class="container">
-      <div class="section-title">
-        <p class="eyebrow">프로그램</p>
-        <h2>원하는 음악 프로그램을 선택하세요</h2>
-        <p class="description">
-          레슨, 잼 세션, 밴드 프로그램, 이벤트, 연습실 대여 옵션을 확인해 보세요.
-          가격은 기본적으로 숨겨져 있으며, 버튼을 누르면 수강료와 예약금 정보를 확인할 수 있습니다.
-        </p>
-      </div>
-
-      <div class="program-group">
-        <div class="program-group-title">
-          <h3>레슨 프로그램</h3>
-        </div>
-
-        <div class="program-grid">
-          <article class="card featured">
-            <div class="tag-row">
-              <span class="tag">인기</span>
-              <span class="tag dark">레슨</span>
-            </div>
-            <h3>1:1 Private 레슨</h3>
-            <p>초보자 또는 취미 음악인을 위한 맞춤형 개인 코칭 프로그램입니다.</p>
-            <ul class="program-meta">
-              <li><strong>대상</strong><span>초보자 또는 취미 음악인</span></li>
-              <li><strong>시간</strong><span>50분</span></li>
-              <li><strong>정원</strong><span>1명</span></li>
-              <li><strong>포함 내용</strong><span>개인 레슨, 곡 연습, 기본 테크닉, 피드백</span></li>
-              <li><strong>상태</strong><span>준비 중</span></li>
-            </ul>
-            <div class="price-box">
-              <div class="price-hidden">수강료가 숨겨져 있습니다. 아래 버튼을 눌러 확인하세요.</div>
-              <div class="price-revealed">
-                수강료: ₩50,000<br />
-                예약금: 없음
-              </div>
-            </div>
-            <div class="card-actions">
-              <button class="btn secondary small reveal-price" type="button">수강료 보기</button>
-              <a class="btn primary small" href="#membership">신청하기</a>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="tag-row">
-              <span class="tag">그룹</span>
-              <span class="tag dark">그룹 Class</span>
-            </div>
-            <h3>그룹 Class Session</h3>
-            <p>친구, 소규모 그룹, 초보자가 부담 없이 함께 배울 수 있는 프로그램입니다.</p>
-            <ul class="program-meta">
-              <li><strong>대상</strong><span>친구, 소규모 그룹, 초보자</span></li>
-              <li><strong>시간</strong><span>60분</span></li>
-              <li><strong>정원</strong><span>2–5명</span></li>
-              <li><strong>포함 내용</strong><span>그룹 learning, rhythm, simple song practice, basic jamming</span></li>
-              <li><strong>상태</strong><span>준비 중</span></li>
-            </ul>
-            <div class="price-box">
-              <div class="price-hidden">수강료가 숨겨져 있습니다. 아래 버튼을 눌러 확인하세요.</div>
-              <div class="price-revealed">
-                수강료: 1인 ₩30,000<br />
-                예약금: 없음
-              </div>
-            </div>
-            <div class="card-actions">
-              <button class="btn secondary small reveal-price" type="button">수강료 보기</button>
-              <a class="btn primary small" href="#membership">신청하기</a>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="tag-row">
-              <span class="tag">프로모션</span>
-              <span class="tag dark">체험</span>
-            </div>
-            <h3>체험 레슨</h3>
-            <p>처음 방문하는 고객을 위한 상담 및 레벨 체크용 체험 레슨입니다.</p>
-            <ul class="program-meta">
-              <li><strong>대상</strong><span>첫 방문 고객</span></li>
-              <li><strong>시간</strong><span>30–40분</span></li>
-              <li><strong>정원</strong><span>1명</span></li>
-              <li><strong>포함 내용</strong><span>입문 레슨, 상담, 레벨 체크</span></li>
-              <li><strong>상태</strong><span>준비 중</span></li>
-            </ul>
-            <div class="price-box">
-              <div class="price-hidden">수강료가 숨겨져 있습니다. 아래 버튼을 눌러 확인하세요.</div>
-              <div class="price-revealed">
-                수강료: ₩20,000–₩30,000<br />
-                예약금: 없음
-              </div>
-            </div>
-            <div class="card-actions">
-              <button class="btn secondary small reveal-price" type="button">수강료 보기</button>
-              <a class="btn primary small" href="#membership">신청하기</a>
-            </div>
-          </article>
+  <main>
+    <section class="hero">
+      <div class="hero-stage" aria-hidden="true">
+        <div class="stage-icons">
+          <div class="amp"></div>
+          <div class="stand"></div>
+          <div class="amp"></div>
+          <div class="drum"></div>
+          <div class="stand"></div>
+          <div class="amp"></div>
+          <div class="amp"></div>
         </div>
       </div>
 
-      <div class="program-group">
-        <div class="program-group-title">
-          <h3>밴드 / 잼 프로그램</h3>
+      <div class="container">
+        <div class="hero-content">
+          <img class="hero-logo" src="images/whitelogo.png" alt="APGU JAM SALON logo" />
+
+          <h1>
+            DON’T BE FAKED,<br />
+            PLAY <span>REAL.</span>
+          </h1>
+
+          <div class="hero-sub">
+            <strong>8 WEEK BAND PROJECT</strong>
+            <a class="btn" href="https://forms.gle/REPLACE_THIS_WITH_YOUR_GOOGLE_FORM" target="_blank" rel="noopener noreferrer">
+              SIGN UP NOW →
+            </a>
+          </div>
         </div>
 
-        <div class="program-grid">
-          <article class="card">
-            <div class="tag-row">
-              <span class="tag">잼 세션</span>
-              <span class="tag dark">1회 이용</span>
-            </div>
-            <h3>잼 세션 Practice Session</h3>
-            <p>소규모 밴드나 친구들이 편안한 공간에서 함께 연주할 수 있는 가이드 잼 세션입니다.</p>
-            <ul class="program-meta">
-              <li><strong>대상</strong><span>소규모 밴드 또는 친구 모임</span></li>
-              <li><strong>시간</strong><span>90분</span></li>
-              <li><strong>정원</strong><span>3–6명</span></li>
-              <li><strong>포함 내용</strong><span>연습실, 가이드 잼 세션, 장비 사용</span></li>
-              <li><strong>상태</strong><span>준비 중</span></li>
-            </ul>
-            <div class="price-box">
-              <div class="price-hidden">수강료가 숨겨져 있습니다. 아래 버튼을 눌러 확인하세요.</div>
-              <div class="price-revealed">
-                이용료: 세션당 ₩80,000–₩120,000<br />
-                예약금: 선택
-              </div>
-            </div>
-            <div class="card-actions">
-              <button class="btn secondary small reveal-price" type="button">수강료 보기</button>
-              <a class="btn primary small" href="#membership">신청하기</a>
-            </div>
-          </article>
-
-          <article class="card featured">
-            <div class="tag-row">
-              <span class="tag">인큐베이터</span>
-              <span class="tag dark">8주 과정</span>
-            </div>
-            <h3>8주 스탠다드 밴드 프로그램</h3>
-            <p>취미 음악인, 외국인, 학생을 위한 체계적인 밴드 프로그램입니다.</p>
-            <ul class="program-meta">
-              <li><strong>대상</strong><span>취미 음악인, 외국인, 학생</span></li>
-              <li><strong>시간</strong><span>8주</span></li>
-              <li><strong>정원</strong><span>약 14명</span></li>
-              <li><strong>포함 내용</strong><span>팀 매칭, 리허설, 최종 공연, 기본 콘텐츠</span></li>
-              <li><strong>상태</strong><span>준비 중</span></li>
-            </ul>
-            <div class="price-box">
-              <div class="price-hidden">수강료가 숨겨져 있습니다. 아래 버튼을 눌러 확인하세요.</div>
-              <div class="price-revealed">
-                수강료: ₩290,000<br />
-                예약금: ₩50,000
-              </div>
-            </div>
-            <div class="card-actions">
-              <button class="btn secondary small reveal-price" type="button">수강료 보기</button>
-              <a class="btn primary small" href="#membership">신청하기</a>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="tag-row">
-              <span class="tag">프리미엄</span>
-              <span class="tag dark">8주 과정</span>
-            </div>
-            <h3>8-Week 프리미엄 Band Program</h3>
-            <p>추가 사진/영상 콘텐츠 혜택을 원하는 참가자를 위한 프리미엄 밴드 프로그램입니다.</p>
-            <ul class="program-meta">
-              <li><strong>대상</strong><span>보다 적극적으로 참여하고 싶은 분</span></li>
-              <li><strong>시간</strong><span>8주</span></li>
-              <li><strong>정원</strong><span>약 6명</span></li>
-              <li><strong>포함 내용</strong><span>스탠다드 패키지 + 추가 사진/영상/콘텐츠 혜택</span></li>
-              <li><strong>상태</strong><span>준비 중</span></li>
-            </ul>
-            <div class="price-box">
-              <div class="price-hidden">수강료가 숨겨져 있습니다. 아래 버튼을 눌러 확인하세요.</div>
-              <div class="price-revealed">
-                수강료: ₩340,000<br />
-                예약금: ₩50,000
-              </div>
-            </div>
-            <div class="card-actions">
-              <button class="btn secondary small reveal-price" type="button">수강료 보기</button>
-              <a class="btn primary small" href="#membership">신청하기</a>
-            </div>
-          </article>
+        <div class="sticker">
+          MAKE MUSIC<br />
+          <span>NOT WAR</span>
         </div>
       </div>
+    </section>
 
-      <div class="program-group">
-        <div class="program-group-title">
-          <h3>이벤트 / 대여</h3>
-        </div>
-
-        <div class="program-grid">
-          <article class="card">
-            <div class="tag-row">
-              <span class="tag">이벤트</span>
-              <span class="tag dark">오픈하우스</span>
-            </div>
-            <h3>오픈하우스 이벤트</h3>
-            <p>잠재 고객을 위한 스튜디오 투어와 미니 잼 이벤트입니다.</p>
-            <ul class="program-meta">
-              <li><strong>대상</strong><span>관심 고객</span></li>
-              <li><strong>시간</strong><span>1일 / 이벤트</span></li>
-              <li><strong>정원</strong><span>20–50명 방문</span></li>
-              <li><strong>포함 내용</strong><span>스튜디오 투어, 미니 잼, 상담, QR 신청</span></li>
-              <li><strong>상태</strong><span>준비 중</span></li>
-            </ul>
-            <div class="price-box">
-              <div class="price-hidden">수강료가 숨겨져 있습니다. 아래 버튼을 눌러 확인하세요.</div>
-              <div class="price-revealed">
-                참가비: 무료 또는 소액<br />
-                예약금: 없음
-              </div>
-            </div>
-            <div class="card-actions">
-              <button class="btn secondary small reveal-price" type="button">수강료 보기</button>
-              <a class="btn primary small" href="#membership">신청하기</a>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="tag-row">
-              <span class="tag">이벤트 Revenue</span>
-              <span class="tag dark">티켓</span>
-            </div>
-            <h3>Final Show 티켓</h3>
-            <p>친구, 지인, 지역 음악 커뮤니티를 위한 라이브 공연 입장권입니다.</p>
-            <ul class="program-meta">
-              <li><strong>대상</strong><span>친구, 지인, 커뮤니티</span></li>
-              <li><strong>시간</strong><span>이벤트 day</span></li>
-              <li><strong>정원</strong><span>약 60명</span></li>
-              <li><strong>포함 내용</strong><span>라이브 공연 입장</span></li>
-              <li><strong>상태</strong><span>준비 중</span></li>
-            </ul>
-            <div class="price-box">
-              <div class="price-hidden">수강료가 숨겨져 있습니다. 아래 버튼을 눌러 확인하세요.</div>
-              <div class="price-revealed">
-                티켓: ₩15,000 / ticket<br />
-                예약금: 없음
-              </div>
-            </div>
-            <div class="card-actions">
-              <button class="btn secondary small reveal-price" type="button">수강료 보기</button>
-              <a class="btn primary small" href="#membership">신청하기</a>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="tag-row">
-              <span class="tag">대여</span>
-              <span class="tag dark">선택 운영</span>
-            </div>
-            <h3>Practice Room 대여</h3>
-            <p>음악 공간과 기본 장비만 필요한 분들을 위한 연습실 대여입니다.</p>
-            <ul class="program-meta">
-              <li><strong>대상</strong><span>공간만 필요한 개인 또는 팀</span></li>
-              <li><strong>시간</strong><span>1시간</span></li>
-              <li><strong>정원</strong><span>1팀</span></li>
-              <li><strong>포함 내용</strong><span>연습실 및 기본 장비 대여</span></li>
-              <li><strong>상태</strong><span>선택 운영</span></li>
-            </ul>
-            <div class="price-box">
-              <div class="price-hidden">수강료가 숨겨져 있습니다. 아래 버튼을 눌러 확인하세요.</div>
-              <div class="price-revealed">
-                대여: ₩15,000–₩25,000 / hour<br />
-                예약금: 선택
-              </div>
-            </div>
-            <div class="card-actions">
-              <button class="btn secondary small reveal-price" type="button">수강료 보기</button>
-              <a class="btn primary small" href="#membership">신청하기</a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="membership" class="section membership-section">
-    <div class="container">
-      <div class="membership-box">
+    <section id="about" class="paper-section">
+      <div class="container about-grid">
         <div>
-          <p class="eyebrow">멤버십</p>
-          <h2>압구잼살롱 멤버십 가입</h2>
-          <p>
-            압구잼살롱의 음악 커뮤니티에 함께하세요. 멤버는 프로그램 소식,
-            우선 예약 안내, 이벤트 공지, 특별 세션 정보를 받아볼 수 있습니다.
+          <span class="label">ABOUT</span>
+          <h2 class="script-title">
+            From Strangers<br />
+            to Stage,<br />
+            Don’t fake it, <em>Stay Real</em>
+          </h2>
+
+          <div class="photo-frame" aria-label="Band practice photo placeholder"></div>
+        </div>
+
+        <div>
+          <p class="about-copy">
+            우리는 낯선 사람들이 하나의 밴드가 되어 무대에 서기까지,
+            8주 동안 진짜 음악을 만듭니다.
           </p>
 
-          <div class="hero-actions">
-            <a class="btn primary" href="https://forms.gle/REPLACE_THIS_WITH_YOUR_GOOGLE_FORM" target="_blank" rel="noopener noreferrer">
-              멤버십 가입
-            </a>
-            <a class="btn secondary" href="#payment">결제 안내 보기</a>
+          <div class="feature-grid">
+            <article class="feature">
+              <div class="feature-num">01</div>
+              <strong>실전 중심의 연습 & 레슨</strong>
+              <p>연주 실력보다 중요한 것은 함께 맞춰보는 실제 경험입니다.</p>
+            </article>
+
+            <article class="feature">
+              <div class="feature-num">02</div>
+              <strong>팀 공간의 특별한 경험</strong>
+              <p>연습실에서 시작되는 진짜 밴드의 분위기를 경험합니다.</p>
+            </article>
+
+            <article class="feature">
+              <div class="feature-num">03</div>
+              <strong>전문적인 레슨 & 세션 지원</strong>
+              <p>피드백과 코칭을 통해 무대에 설 수 있도록 돕습니다.</p>
+            </article>
+
+            <article class="feature">
+              <div class="feature-num">04</div>
+              <strong>추가 비용 없이 본 공연 진행</strong>
+              <p>8주 프로그램 후 실제 공연 경험까지 연결합니다.</p>
+            </article>
+
+            <article class="feature">
+              <div class="feature-num">05</div>
+              <strong>기록으로 남기는 우리의 음악</strong>
+              <p>연습과 공연의 순간을 콘텐츠로 기록합니다.</p>
+            </article>
+
+            <article class="feature">
+              <div class="feature-num">06</div>
+              <strong>악기 우선 렌탈</strong>
+              <p>필요 시 악기와 기본 장비 이용을 도와드립니다.</p>
+            </article>
+
+            <article class="feature">
+              <div class="feature-num">07</div>
+              <strong>다양한 문화권의 교류</strong>
+              <p>국내외 참가자들이 함께 음악으로 만납니다.</p>
+            </article>
+
+            <article class="feature">
+              <div class="feature-num">08</div>
+              <strong>우리는 하나의 팀이 됩니다</strong>
+              <p>8주 후, 당신은 무대 위 진짜 밴드가 됩니다.</p>
+            </article>
           </div>
         </div>
-
-        <ul class="benefit-list">
-          <li>레슨 및 잼 세션 일정 우선 안내</li>
-          <li>오픈하우스 및 파이널 쇼 공지</li>
-          <li>밴드 프로그램 신청 안내</li>
-          <li>특별 1회 세션 참여 기회</li>
-        </ul>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="payment" class="section payment-section">
-    <div class="container payment-grid">
-      <div class="section-title">
-        <p class="eyebrow">결제 / 예약금</p>
-        <h2>결제 정보를 보기 전에 정보를 입력해 주세요</h2>
-        <p class="description">
-          이름, 이메일, 연락처, 선택 프로그램을 먼저 입력해 주세요.
-          필수 정보 입력 후 결제 QR과 계좌 정보를 확인할 수 있습니다.
-        </p>
-        <p class="note">
-          안내: 현재 페이지에서는 결제 정보 확인을 위한 필수 입력 여부만 확인합니다.
-          실제 신청 정보 접수는 추후 Google Forms, Formspree, Getform 또는 별도 백엔드와 연결하는 것을 권장합니다.
-        </p>
+    <section id="program" class="dark-section">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="rough">PROGRAM</h2>
+        </div>
+
+        <div class="program-cards">
+          <article class="program-card standard">
+            <div class="program-top">
+              <h3>STANDARD</h3>
+              <span class="price-pill">29만원</span>
+            </div>
+
+            <div class="program-list">
+              <div><span class="icon">☘</span>네트워킹 참여</div>
+              <div><span class="icon">🎸</span>8주 밴드 프로젝트</div>
+              <div><span class="icon">🎤</span>주 1회 리허설</div>
+              <div><span class="icon">♡</span>팀 매칭</div>
+              <div><span class="icon">★</span>최종 공연 참여</div>
+              <div><span class="icon">🎁</span>파트 별 레슨</div>
+            </div>
+          </article>
+
+          <article class="program-card premium">
+            <div class="program-top">
+              <h3>PREMIUM</h3>
+              <span class="price-pill">34만원</span>
+            </div>
+
+            <div class="program-list">
+              <div><span class="icon">＋</span>Standard 전체 포함</div>
+              <div><span class="icon">🎬</span>공연 영상 클립</div>
+              <div><span class="icon">🎧</span>믹스 마스터 음원</div>
+              <div><span class="icon">📷</span>SNS용 콘텐츠</div>
+              <div><span class="icon">✨</span>프로필 콘텐츠</div>
+              <div><span class="icon">⚡</span>멤버 전용 혜택</div>
+            </div>
+          </article>
+        </div>
       </div>
+    </section>
 
-      <div class="payment-panel">
-        <form id="paymentForm" novalidate>
-          <div class="form-grid">
-            <div class="field">
-              <label for="customerName">이름 *</label>
-              <input id="customerName" name="customerName" type="text" placeholder="이름을 입력하세요" required />
-            </div>
+    <section id="apply" class="apply-band">
+      <div class="container apply-grid">
+        <div>
+          <h2>APPLY</h2>
+          <p>지금 바로 8주 밴드 프로젝트에 지원하세요!</p>
+          <a class="btn dark" href="https://forms.gle/REPLACE_THIS_WITH_YOUR_GOOGLE_FORM" target="_blank" rel="noopener noreferrer">
+            구글폼으로 지원하기 →
+          </a>
+        </div>
 
-            <div class="field">
-              <label for="customerEmail">이메일 *</label>
-              <input id="customerEmail" name="customerEmail" type="email" placeholder="you@example.com" required />
-            </div>
+        <div class="mini-photos" aria-label="Application photo placeholders">
+          <div class="mini-photo"></div>
+          <div class="mini-photo"></div>
+        </div>
+      </div>
+    </section>
 
-            <div class="field">
-              <label for="customerPhone">연락처 *</label>
-              <input id="customerPhone" name="customerPhone" type="tel" placeholder="010-0000-0000" required />
-            </div>
+    <section id="clip" class="dark-section">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="rough">CLIP</h2>
+        </div>
 
-            <div class="field">
-              <label for="selectedProgram">프로그램 *</label>
-              <select id="selectedProgram" name="selectedProgram" required>
-                <option value="">프로그램 선택</option>
-                <option>1:1 Private 레슨</option>
-                <option>그룹 Class Session</option>
-                <option>잼 세션 Practice Session</option>
-                <option>체험 레슨</option>
-                <option>8주 스탠다드 밴드 프로그램</option>
-                <option>8-Week 프리미엄 Band Program</option>
-                <option>오픈하우스 이벤트</option>
-                <option>Final Show 티켓</option>
-                <option>Practice Room 대여</option>
-              </select>
-            </div>
+        <div class="clips">
+          <a class="clip-card" href="#" aria-label="공연 실황 clip">
+            <div class="clip-thumb"><span class="play">▶</span></div>
+            <strong>공연 실황</strong>
+          </a>
 
-            <div class="field full">
-              <button class="btn primary" type="submit">결제 정보 보기</button>
-              <div id="formMessage" class="form-message"></div>
-            </div>
-          </div>
-        </form>
+          <a class="clip-card" href="#" aria-label="합주 스케치 clip">
+            <div class="clip-thumb"><span class="play">▶</span></div>
+            <strong>합주 스케치</strong>
+          </a>
 
-        <div id="paymentInfo" class="payment-info" aria-live="polite">
-          <div class="qr-card">
-            <img src="images/qr-payment.svg" alt="압구잼살롱 결제 QR 코드" />
-            <p class="note">실제 결제 QR 이미지로 교체해 주세요.</p>
-          </div>
+          <a class="clip-card" href="#" aria-label="게더링 파티 clip">
+            <div class="clip-thumb"><span class="play">▶</span></div>
+            <strong>게더링 파티</strong>
+          </a>
 
-          <div>
-            <h3>결제 정보</h3>
+          <a class="clip-card" href="#" aria-label="클리닉 현장 clip">
+            <div class="clip-thumb"><span class="play">▶</span></div>
+            <strong>클리닉 현장</strong>
+          </a>
+
+          <a class="clip-card" href="#" aria-label="멤버 인터뷰 clip">
+            <div class="clip-thumb"><span class="play">▶</span></div>
+            <strong>멤버 인터뷰</strong>
+          </a>
+        </div>
+
+        <div class="bottom-panels">
+          <section id="faq" class="panel">
+            <h3>FAQ</h3>
             <p>
-              예약 가능 여부 또는 프로그램 신청이 확인된 후 예약금 또는 결제를 진행해 주세요.
+              궁금한 점이 있으신가요?<br />
+              카카오톡으로 빠르게 문의하세요!
+            </p>
+            <a class="btn light" href="https://open.kakao.com/o/REPLACE_THIS" target="_blank" rel="noopener noreferrer">
+              카카오톡 문의하기
+            </a>
+          </section>
+
+          <section id="event" class="panel event">
+            <h3>EVENT</h3>
+            <p>
+              파티, 클리닉, 학교 스페셜 데이즈!<br />
+              다양한 이벤트에 참여해보세요.
             </p>
 
-            <ul class="bank-details">
-              <li><strong>은행</strong><span>REPLACE_BANK_NAME</span></li>
-              <li><strong>계좌번호</strong><span>REPLACE_ACCOUNT_NUMBER</span></li>
-              <li><strong>예금주</strong><span>REPLACE_ACCOUNT_HOLDER</span></li>
-              <li><strong>입금 메모</strong><span>입금 시 이름과 선택한 프로그램명을 함께 남겨 주세요.</span></li>
-            </ul>
+            <div class="event-icons">
+              <div><span>🎸</span>클리닉</div>
+              <div><span>🎫</span>뮤비 상영회</div>
+              <div><span>☀</span>파티</div>
+              <div><span>🎤</span>스페셜 데이즈</div>
+            </div>
+          </section>
 
-            <p id="paymentSummary" class="note"></p>
-          </div>
+          <section id="members" class="panel">
+            <h3>MEMBERS ONLY</h3>
+            <p>
+              멤버들을 위한 전용 공간!<br />
+              자료실 및 공지사항을 확인하세요.
+            </p>
+            <a class="btn members-btn" href="#" target="_blank" rel="noopener noreferrer">
+              멤버 전용 페이지 바로가기 →
+            </a>
+          </section>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <section id="contact" class="section contact">
-    <div class="container contact-box">
-      <p class="eyebrow">문의하기</p>
-      <h2>예약을 준비하고 계신가요?</h2>
-      <p>
-        희망 날짜, 프로그램 종류, 참여 인원을 적어 메시지를 보내 주세요.
-      </p>
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <img class="footer-logo" src="images/whitelogo.png" alt="APGU JAM SALON logo" />
 
-      <div class="contact-actions">
-        <a class="btn primary" href="mailto:sales@niceday.co.kr">이메일 문의</a>
-        <a class="btn secondary" href="tel:+821012345678">전화 문의</a>
+      <div>
+        <strong>APGU JAM SALON</strong><br />
+        8 WEEK BAND PROJECT
+        <div class="sns">
+          <a href="#" aria-label="Instagram">IG</a>
+          <a href="#" aria-label="YouTube">YT</a>
+          <a href="#" aria-label="Spotify">SP</a>
+        </div>
       </div>
 
-      <p class="contact-detail">
-        이메일: <a href="mailto:sales@niceday.co.kr">sales@niceday.co.kr</a>
-      </p>
+      <div>
+        개인정보처리방침<br />
+        이용약관<br />
+        문의: apgujamsalon@gmail.com
+      </div>
+
+      <div>
+        © 2026 APGU JAM SALON.<br />
+        ALL RIGHTS RESERVED.
+      </div>
     </div>
-  </section>
-</main>
-
-<footer class="site-footer">
-  <div class="container">
-    <p>© 2026 압구잼살롱. All rights reserved.</p>
-  </div>
-</footer>
-
-<script>
-  document.querySelectorAll(".reveal-price").forEach(function(button) {
-    button.add이벤트Listener("click", function() {
-      const card = button.closest(".card");
-      const hiddenText = card.querySelector(".price-hidden");
-      const revealedText = card.querySelector(".price-revealed");
-
-      hiddenText.classList.add("hidden");
-      revealedText.classList.add("active");
-      button.textContent = "수강료 표시됨";
-      button.disabled = true;
-    });
-  });
-
-  const paymentForm = document.getElementById("paymentForm");
-  const formMessage = document.getElementById("formMessage");
-  const paymentInfo = document.getElementById("paymentInfo");
-  const paymentSummary = document.getElementById("paymentSummary");
-
-  paymentForm.add이벤트Listener("submit", function(event) {
-    event.preventDefault();
-
-    const name = document.getElementById("customerName").value.trim();
-    const email = document.getElementById("customerEmail").value.trim();
-    const phone = document.getElementById("customerPhone").value.trim();
-    const program = document.getElementById("selectedProgram").value.trim();
-
-    formMessage.className = "form-message";
-    formMessage.textContent = "";
-
-    if (!name || !email || !phone || !program) {
-      paymentInfo.classList.remove("active");
-      formMessage.classList.add("error");
-      formMessage.textContent = "이름, 이메일, 연락처, 선택 프로그램을 모두 입력해 주세요.";
-      return;
-    }
-
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailPattern.test(email)) {
-      paymentInfo.classList.remove("active");
-      formMessage.classList.add("error");
-      formMessage.textContent = "올바른 이메일 주소를 입력해 주세요.";
-      return;
-    }
-
-    formMessage.classList.add("success");
-    formMessage.textContent = "감사합니다. 아래에서 결제 정보를 확인하실 수 있습니다.";
-
-    paymentSummary.textContent = "신청자: " + name + " / 프로그램: " + program + " / 연락처: " + phone;
-    paymentInfo.classList.add("active");
-  });
-</script>
-
+  </footer>
 </body>
 </html>
