@@ -25,6 +25,7 @@
 
     .page {
       width: 100%;
+      max-width: none;
       margin: 0 auto;
       position: relative;
       background: #000;
@@ -34,6 +35,7 @@
     .poster {
       display: block;
       width: 100%;
+      max-width: none;
       height: auto;
       pointer-events: none;
       user-select: none;
@@ -138,16 +140,16 @@
     }
 
     .signup-mask {
-      left: 61.8%;
+      left: 64.29%;
       top: .55%;
-      width: 19.4%;
+      width: 23.49%;
       height: 3.6%;
     }
 
     .menu-mask {
-      left: 79.2%;
+      left: 85.36%;
       top: .55%;
-      width: 9.4%;
+      width: 11.38%;
       height: 3.6%;
     }
 
@@ -208,14 +210,14 @@
     .mobile-menu-ui span { top: 46%; }
     .mobile-menu-ui::after { top: 61%; }
 
-    .logo-home { left: 11.0%; top: 1.2%; width: 13.0%; height: 7.3%; }
-    .hero-signup { left: 12.4%; top: 17.9%; width: 25.4%; height: 3.3%; }
-    .apply-link { left: 10.8%; top: 70.8%; width: 28.2%; height: 3.2%; }
-    .clip-1 { left: 12.35%; top: 77.16%; width: 15.35%; height: 4.95%; }
-    .clip-2 { left: 28.50%; top: 77.16%; width: 15.25%; height: 4.95%; }
-    .clip-3 { left: 44.33%; top: 77.16%; width: 14.42%; height: 4.95%; }
-    .clip-4 { left: 59.60%; top: 77.16%; width: 14.00%; height: 4.95%; }
-    .clip-5 { left: 74.52%; top: 77.16%; width: 13.80%; height: 4.95%; }
+    .logo-home { left: 2.77%; top: 1.2%; width: 15.74%; height: 7.3%; }
+    .hero-signup { left: 5.75%; top: 17.9%; width: 30.76%; height: 3.3%; }
+    .apply-link { left: 2.53%; top: 70.8%; width: 34.15%; height: 3.2%; }
+    .clip-1 { left: 4.40%; top: 77.16%; width: 18.59%; height: 4.95%; }
+    .clip-2 { left: 23.96%; top: 77.16%; width: 18.47%; height: 4.95%; }
+    .clip-3 { left: 43.14%; top: 77.16%; width: 17.46%; height: 4.95%; }
+    .clip-4 { left: 61.63%; top: 77.16%; width: 16.96%; height: 4.95%; }
+    .clip-5 { left: 79.70%; top: 77.16%; width: 16.71%; height: 4.95%; }
 
     .clip-media {
       position: absolute;
@@ -261,19 +263,19 @@
       outline-offset: 2px;
     }
 
-    .kakao-link { left: 11.2%; top: 88.3%; width: 22.3%; height: 3.3%; }
-    .event-link { left: 34.2%; top: 84.1%; width: 33.6%; height: 9.9%; }
-    .members-link { left: 68.8%; top: 83.7%; width: 29.8%; height: 10.7%; }
-    .email-copy { left: 31.2%; top: 96.15%; width: 36.0%; height: 1.6%; }
-    .instagram-link { left: 20.95%; top: 96.78%; width: 2.85%; height: 1.65%; }
-    .youtube-link { left: 25.75%; top: 96.78%; width: 3.25%; height: 1.65%; }
-    .spotify-link { left: 31.00%; top: 96.78%; width: 3.05%; height: 1.65%; }
+    .kakao-link { left: 3.01%; top: 88.3%; width: 27.01%; height: 3.3%; }
+    .event-link { left: 30.86%; top: 84.1%; width: 40.69%; height: 9.9%; }
+    .members-link { left: 72.77%; top: 83.7%; width: 25.20%; height: 10.7%; }
+    .email-copy { left: 27.23%; top: 96.15%; width: 43.60%; height: 1.6%; }
+    .instagram-link { left: 14.82%; top: 96.78%; width: 3.45%; height: 1.65%; }
+    .youtube-link { left: 20.63%; top: 96.78%; width: 3.94%; height: 1.65%; }
+    .spotify-link { left: 26.99%; top: 96.78%; width: 3.69%; height: 1.65%; }
 
     .email-patch {
       position: absolute;
-      left: 31.2%;
+      left: 27.23%;
       top: 96.11%;
-      width: 36.0%;
+      width: 43.60%;
       height: 1.5%;
       z-index: 3;
       display: flex;
@@ -290,9 +292,9 @@
 
     .copyright-patch {
       position: absolute;
-      left: 63.2%;
+      left: 65.99%;
       top: 94.35%;
-      width: 26.4%;
+      width: 31.97%;
       height: 3.3%;
       z-index: 3;
       display: flex;
@@ -396,20 +398,24 @@
       .mobile-signup-ui {
         position: fixed;
         left: auto;
-        right: 74px;
-        top: 12px;
-        width: 118px;
-        height: 40px;
+        right: 16.9vw;
+        top: 2.1vw;
+        width: 15.0vw;
+        height: 5.1vw;
+        max-width: 142px;
+        max-height: 48px;
         z-index: 60;
       }
 
       .mobile-menu-ui {
         position: fixed;
         left: auto;
-        right: 14px;
-        top: 10px;
-        width: 52px;
-        height: 44px;
+        right: 5.5vw;
+        top: 1.8vw;
+        width: 8.3vw;
+        height: 5.7vw;
+        max-width: 78px;
+        max-height: 54px;
         z-index: 60;
       }
 
@@ -427,8 +433,8 @@
 
       .menu {
         position: fixed;
-        top: 62px;
-        right: 12px;
+        top: max(52px, 8.2vw);
+        right: 3.5vw;
         width: min(285px, calc(100vw - 24px));
         z-index: 59;
       }
@@ -457,7 +463,7 @@
   </header>
 
   <main class="page" aria-label="APGU JAM SALON mobile web page">
-    <img class="poster" src="images/mobileweb.png" alt="APGU JAM SALON 8 week band project poster" draggable="false" />
+    <img class="poster" src="images/mobileweb-cropped.png" alt="APGU JAM SALON 8 week band project poster" draggable="false" />
 
     <button class="hotspot logo-home" type="button" aria-label="Back to top"></button>
     <div class="mobile-control-mask signup-mask" aria-hidden="true"></div>
