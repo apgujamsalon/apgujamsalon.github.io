@@ -31,6 +31,7 @@
       border-radius: 8px;
       background: rgba(10, 10, 9, .88);
       box-shadow: 10px 12px 0 rgba(0, 0, 0, .42);
+      overflow: hidden;
     }
 
     .logo {
@@ -85,6 +86,8 @@
       }
 
       .panel {
+        width: 100%;
+        max-width: 360px;
         padding: 26px 18px 24px;
         box-shadow: 6px 7px 0 rgba(0, 0, 0, .42);
       }
@@ -95,21 +98,25 @@
       }
 
       h1 {
-        font-size: clamp(32px, 14vw, 48px);
+        font-size: clamp(27px, 11vw, 38px);
         line-height: .92;
         margin-bottom: 12px;
+        overflow-wrap: anywhere;
       }
 
       p {
-        font-size: 14px;
+        max-width: 100%;
+        font-size: 13px;
         line-height: 1.55;
+        overflow-wrap: anywhere;
       }
 
       .email {
         max-width: 100%;
         overflow-wrap: anywhere;
+        word-break: break-word;
         margin-top: 12px;
-        font-size: 14px;
+        font-size: 13px;
       }
 
       .back {
