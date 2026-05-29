@@ -9,12 +9,20 @@
   <style>
     * { box-sizing: border-box; }
 
+    html {
+      width: 100%;
+      overflow-x: hidden;
+      overscroll-behavior: none;
+    }
+
     body {
       margin: 0;
       background: #000;
       color: #fff1cf;
       font-family: Arial, Helvetica, sans-serif;
+      width: 100%;
       overflow-x: hidden;
+      overscroll-behavior: none;
     }
 
     .page {
@@ -22,6 +30,7 @@
       margin: 0 auto;
       position: relative;
       background: #000;
+      overflow: hidden;
       -webkit-touch-callout: none;
     }
 
