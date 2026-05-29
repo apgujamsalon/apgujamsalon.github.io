@@ -31,7 +31,6 @@
       border-radius: 8px;
       background: rgba(10, 10, 9, .88);
       box-shadow: 10px 12px 0 rgba(0, 0, 0, .42);
-      overflow: hidden;
     }
 
     .logo {
@@ -82,13 +81,13 @@
 
     @media (max-width: 520px) {
       body {
-        padding: 16px;
+        padding: 10px;
       }
 
       .panel {
-        width: 100%;
-        max-width: 430px;
-        padding: 26px 22px 24px;
+        width: calc(100vw - 20px);
+        max-width: none;
+        padding: 24px 14px 22px;
         box-shadow: 6px 7px 0 rgba(0, 0, 0, .42);
       }
 
@@ -98,7 +97,7 @@
       }
 
       h1 {
-        font-size: clamp(24px, 8vw, 34px);
+        font-size: clamp(20px, 7vw, 30px);
         line-height: 1;
         margin-bottom: 12px;
         white-space: nowrap;
