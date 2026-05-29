@@ -78,6 +78,45 @@
       text-decoration: none;
       box-shadow: 4px 5px 0 rgba(0,0,0,.45);
     }
+
+    @media (max-width: 520px) {
+      body {
+        padding: 16px;
+      }
+
+      .panel {
+        padding: 26px 18px 24px;
+        box-shadow: 6px 7px 0 rgba(0, 0, 0, .42);
+      }
+
+      .logo {
+        width: 94px;
+        margin-bottom: 18px;
+      }
+
+      h1 {
+        font-size: clamp(32px, 14vw, 48px);
+        line-height: .92;
+        margin-bottom: 12px;
+      }
+
+      p {
+        font-size: 14px;
+        line-height: 1.55;
+      }
+
+      .email {
+        max-width: 100%;
+        overflow-wrap: anywhere;
+        margin-top: 12px;
+        font-size: 14px;
+      }
+
+      .back {
+        width: 100%;
+        margin-top: 22px;
+      }
+    }
   </style>
 </head>
 <body>
