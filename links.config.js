@@ -19,11 +19,11 @@ window.AP_GU_LINKS = {
     },
     3: {
       title: "게더링 파티 / Gathering Party",
-      url: "https://www.youtube.com/watch?v=5A_Fzh9JYEs&list=RD5A_Fzh9JYEs&start_radio=1"
+      url: "https://www.youtube.com/watch?v=SSgHXYeoRqA&list=RDSSgHXYeoRqA&start_radio=1"
     },
     4: {
       title: "클리닉 현장 / Clinic Session",
-      url: "https://www.youtube.com/watch?v=2J2_bkJ_UG4&list=RD2J2_bkJ_UG4&start_radio=1"
+      url: "https://www.youtube.com/watch?v=DBCV7rfGiUY&list=RDDBCV7rfGiUY&start_radio=1"
     },
     5: {
       title: "멤버 인터뷰 / Member Interview",
