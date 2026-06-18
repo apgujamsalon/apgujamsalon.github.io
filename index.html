@@ -108,7 +108,7 @@
     }
 
     .desktop-hero {
-      display: none;
+      display: block;
       position: absolute;
       top: 0;
       left: 0;
@@ -439,7 +439,6 @@
     @media (min-width: 981px) {
       .desktop-header { display: block; }
       .page { margin-top: 78px; }
-      .desktop-hero { display: block; }
       .mobile-signup-ui,
       .mobile-menu-ui,
       .logo-home,
@@ -489,6 +488,19 @@
         right: 3.5vw;
         width: min(285px, calc(100vw - 24px));
         z-index: 59;
+      }
+
+      .desktop-hero {
+        height: 28vw;
+        max-height: 190px;
+      }
+
+      .desktop-hero-media {
+        top: 1.8%;
+        left: 4.2%;
+        width: min(22vw, 120px);
+        height: min(22vw, 120px);
+        box-shadow: 0 0 0 3px rgba(255, 255, 255, .88);
       }
     }
 
