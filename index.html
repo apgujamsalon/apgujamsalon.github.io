@@ -30,6 +30,10 @@
       position: relative;
       background: #000;
       -webkit-touch-callout: none;
+      --mobile-logo-left: 2.77%;
+      --mobile-logo-top: 1.2%;
+      --mobile-logo-width: 15.74%;
+      --mobile-logo-height: 7.3%;
     }
 
     .poster {
@@ -156,6 +160,47 @@
       border-radius: 50%;
     }
 
+    .mobile-hero {
+      display: none;
+      position: absolute;
+      inset: 0;
+      z-index: 4;
+      pointer-events: none;
+    }
+
+    .mobile-hero-media {
+      position: absolute;
+      left: var(--mobile-logo-left);
+      top: var(--mobile-logo-top);
+      width: var(--mobile-logo-width);
+      height: var(--mobile-logo-height);
+      overflow: hidden;
+      border-radius: 50%;
+      aspect-ratio: 1 / 1;
+      box-shadow: 0 0 0 3px rgba(255, 255, 255, .88);
+      background: #000;
+    }
+
+    .mobile-hero-video {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+      border-radius: 50%;
+      background: #000;
+      opacity: .98;
+    }
+
+    .mobile-hero-media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at center, rgba(0, 0, 0, 0) 58%, rgba(0, 0, 0, .08) 78%, rgba(0, 0, 0, .22) 100%);
+      border-radius: 50%;
+    }
+
     .hotspot {
       position: absolute;
       display: block;
@@ -259,7 +304,13 @@
     .mobile-menu-ui span { top: 46%; }
     .mobile-menu-ui::after { top: 61%; }
 
-    .logo-home { left: 2.77%; top: 1.2%; width: 15.74%; height: 7.3%; }
+    .logo-home {
+      left: var(--mobile-logo-left);
+      top: var(--mobile-logo-top);
+      width: var(--mobile-logo-width);
+      height: var(--mobile-logo-height);
+      z-index: 5;
+    }
     .hero-signup { left: 5.75%; top: 17.9%; width: 30.76%; height: 3.3%; }
     .apply-link { left: 2.53%; top: 70.8%; width: 34.15%; height: 3.2%; }
     .clip-1 { left: 4.40%; top: 77.16%; width: 18.59%; height: 4.95%; }
@@ -450,6 +501,10 @@
         display: none;
       }
 
+      .mobile-hero {
+        display: block;
+      }
+
       .mobile-signup-ui {
         position: fixed;
         left: auto;
@@ -576,6 +631,13 @@
     <section class="desktop-hero" aria-label="APGU JAM SALON intro">
       <div class="desktop-hero-media">
         <video class="desktop-hero-video" autoplay muted loop playsinline preload="metadata">
+          <source src="images/KakaoTalk_Video_2026-06-18-19-16-20.mp4" type="video/mp4" />
+        </video>
+      </div>
+    </section>
+    <section class="mobile-hero" aria-hidden="true">
+      <div class="mobile-hero-media">
+        <video class="mobile-hero-video" autoplay muted loop playsinline preload="metadata">
           <source src="images/KakaoTalk_Video_2026-06-18-19-16-20.mp4" type="video/mp4" />
         </video>
       </div>
