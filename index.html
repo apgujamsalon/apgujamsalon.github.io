@@ -508,7 +508,7 @@
         <a href="#" data-scroll="apply">APPLY</a>
         <a href="#" data-scroll="clip">CLIP</a>
         <a href="#" data-scroll="faq">FAQ</a>
-        <a href="#" data-scroll="event">EVENT</a>
+        <a href="#" data-link="event">EVENT</a>
         <a href="#" data-scroll="members">MEMBERS ONLY</a>
       </nav>
 
@@ -556,7 +556,7 @@
       <a href="#" data-scroll="apply">APPLY</a>
       <a href="#" data-scroll="clip">CLIP</a>
       <a href="#" data-scroll="faq">FAQ</a>
-      <a href="#" data-scroll="event">EVENT</a>
+      <a href="#" data-link="event">EVENT</a>
       <a href="#" data-scroll="members">MEMBERS ONLY</a>
       <button class="menu-close" type="button">CLOSE</button>
     </nav>
@@ -738,9 +738,19 @@
       setMenu(false);
     });
 
-    window.addEventListener("load", () => {
+    function initializeVideoModal() {
       setVideoModal(true);
       attemptVideoAutoplay();
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initializeVideoModal, { once: true });
+    } else {
+      initializeVideoModal();
+    }
+
+    window.addEventListener("pageshow", () => {
+      if (videoModal.hidden) initializeVideoModal();
     });
   </script>
 </body>
