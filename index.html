@@ -439,6 +439,60 @@
         z-index: 59;
       }
     }
+
+    .video-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 80;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: rgba(0, 0, 0, .82);
+    }
+
+    .video-modal[hidden] {
+      display: none;
+    }
+
+    .video-modal-dialog {
+      position: relative;
+      width: min(92vw, 720px);
+      max-height: 90vh;
+      padding: 18px 18px 14px;
+      border: 1px solid rgba(255, 255, 255, .18);
+      border-radius: 18px;
+      background: #050505;
+      box-shadow: 0 24px 70px rgba(0, 0, 0, .5);
+    }
+
+    .video-modal-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 40px;
+      height: 40px;
+      border: 0;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .12);
+      color: #fff;
+      font-size: 24px;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .video-modal-close:focus-visible {
+      outline: 3px solid #ff6a19;
+      outline-offset: 2px;
+    }
+
+    .video-modal-player {
+      display: block;
+      width: 100%;
+      max-height: calc(90vh - 32px);
+      border-radius: 12px;
+      background: #000;
+    }
   </style>
 </head>
 <body>
@@ -488,7 +542,7 @@
     <a class="hotspot spotify-link" href="#" data-link="spotify" aria-label="Spotify"></a>
     <button class="hotspot email-copy" type="button" aria-label="Copy email address"></button>
 
-    <div class="email-patch" aria-hidden="true">문의 : apgujamsalon@gmail.com</div>
+    <div class="email-patch" aria-hidden="true">문의 : obedientcrime@gmail.com</div>
 
     <div class="copyright-patch" aria-hidden="true">
       © 2026 APGU JAM SALON.<br />
@@ -509,6 +563,14 @@
   </main>
 
   <div class="toast" role="status" aria-live="polite">Email copied</div>
+  <div class="video-modal" id="videoModal" role="dialog" aria-modal="true" aria-label="Intro video" hidden>
+    <div class="video-modal-dialog">
+      <button class="video-modal-close" id="videoModalClose" type="button" aria-label="Close video popup">X</button>
+      <video class="video-modal-player" id="videoModalPlayer" controls playsinline preload="metadata">
+        <source src="images/KakaoTalk_Video_2026-06-18-19-16-20.mp4" type="video/mp4" />
+      </video>
+    </div>
+  </div>
 
   <script src="links.config.js"></script>
   <script>
@@ -518,6 +580,9 @@
     const menuClose = document.querySelector(".menu-close");
     const page = document.querySelector(".page");
     const toast = document.querySelector(".toast");
+    const videoModal = document.getElementById("videoModal");
+    const videoModalClose = document.getElementById("videoModalClose");
+    const videoModalPlayer = document.getElementById("videoModalPlayer");
     const sectionOffsets = {
       home: 0,
       about: 0.22,
@@ -604,7 +669,7 @@
     }
 
     async function copyEmail() {
-      const email = links.email || "apgujamsalon@gmail.com";
+      const email = links.email || "obedientcrime@gmail.com";
       try {
         await navigator.clipboard.writeText(email);
         showToast("Email copied");
@@ -634,8 +699,20 @@
       menuToggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
     }
 
+    function setVideoModal(open) {
+      videoModal.hidden = !open;
+      if (open) return;
+      videoModalPlayer.pause();
+      videoModalPlayer.currentTime = 0;
+    }
+
     menuToggle.addEventListener("click", () => setMenu(menu.hidden));
     menuClose.addEventListener("click", () => setMenu(false));
+    videoModalClose.addEventListener("click", () => setVideoModal(false));
+
+    videoModal.addEventListener("click", (event) => {
+      if (event.target === videoModal) setVideoModal(false);
+    });
 
     menu.querySelectorAll("a").forEach((link) => {
       link.addEventListener("click", () => setMenu(false));
@@ -643,12 +720,17 @@
 
     document.addEventListener("keydown", (event) => {
       if (event.key === "Escape") setMenu(false);
+      if (event.key === "Escape" && !videoModal.hidden) setVideoModal(false);
     });
 
     document.addEventListener("click", (event) => {
       if (menu.hidden) return;
       if (menu.contains(event.target) || menuToggle.contains(event.target)) return;
       setMenu(false);
+    });
+
+    window.addEventListener("load", () => {
+      setVideoModal(true);
     });
   </script>
 </body>

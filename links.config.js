@@ -1,12 +1,12 @@
 window.AP_GU_LINKS = {
-  signup: "signup.html",
-  apply: "signup.html",
+  signup: "https://docs.google.com/forms/d/1JHAvNYFwoXc_947NcUjbCVdcxG69aTzp2p4lxzRChPI/edit",
+  apply: "https://docs.google.com/forms/d/1JHAvNYFwoXc_947NcUjbCVdcxG69aTzp2p4lxzRChPI/edit",
   kakao: "https://open.kakao.com/",
-  email: "apgujamsalon@gmail.com",
-  instagram: "www.instagram.com",
+  email: "obedientcrime@gmail.com",
+  instagram: "https://www.instagram.com/APGUJAM_SALON",
   youtube: "www.youtube.com",
   spotify: "www.spotify.com",
-  event: "www.instagram.com",
+  event: "https://docs.google.com/forms/d/1BGSs5gfasRZwCK0OelUmYDYxgZgaPfTtqEIh7mpZzus/edit?hl=ko&pli=1",
   members: "www.instagram.com",
   clips: {
     1: {
