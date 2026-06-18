@@ -566,7 +566,7 @@
   <div class="video-modal" id="videoModal" role="dialog" aria-modal="true" aria-label="Intro video" hidden>
     <div class="video-modal-dialog">
       <button class="video-modal-close" id="videoModalClose" type="button" aria-label="Close video popup">X</button>
-      <video class="video-modal-player" id="videoModalPlayer" controls playsinline preload="metadata">
+      <video class="video-modal-player" id="videoModalPlayer" controls autoplay playsinline preload="metadata">
         <source src="images/KakaoTalk_Video_2026-06-18-19-16-20.mp4" type="video/mp4" />
       </video>
     </div>
@@ -706,6 +706,15 @@
       videoModalPlayer.currentTime = 0;
     }
 
+    async function attemptVideoAutoplay() {
+      videoModalPlayer.muted = false;
+      try {
+        await videoModalPlayer.play();
+      } catch (error) {
+        videoModalPlayer.controls = true;
+      }
+    }
+
     menuToggle.addEventListener("click", () => setMenu(menu.hidden));
     menuClose.addEventListener("click", () => setMenu(false));
     videoModalClose.addEventListener("click", () => setVideoModal(false));
@@ -731,6 +740,7 @@
 
     window.addEventListener("load", () => {
       setVideoModal(true);
+      attemptVideoAutoplay();
     });
   </script>
 </body>
