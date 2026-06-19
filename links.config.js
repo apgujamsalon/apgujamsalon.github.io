@@ -7,7 +7,7 @@ window.AP_GU_LINKS = {
   youtube: "www.youtube.com",
   spotify: "www.spotify.com",
   event: "https://docs.google.com/forms/d/1BGSs5gfasRZwCK0OelUmYDYxgZgaPfTtqEIh7mpZzus/edit?hl=ko&pli=1",
-  members: "www.instagram.com",
+  members: "memberlogin.html",
   clips: {
     1: {
       title: "공연 실황 / Live Performance",

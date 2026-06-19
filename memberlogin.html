@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>APGU JAM SALON | Members Only</title>
+  <meta name="description" content="APGU JAM SALON members only login page." />
+  <link rel="icon" type="image/png" href="images/blacklogo.png" />
+  <style>
+    * { box-sizing: border-box; }
+
+    html {
+      min-height: 100%;
+      background: #050505;
+    }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      display: grid;
+      place-items: center;
+      padding: 28px;
+      background:
+        linear-gradient(135deg, rgba(0, 0, 0, .12), rgba(0, 0, 0, .72)),
+        url("images/mobileweb-cropped.png") 78% 86% / cover no-repeat,
+        #050505;
+      color: #fff1cf;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(circle at 72% 18%, rgba(240, 90, 28, .34), transparent 28%),
+        linear-gradient(180deg, rgba(0, 0, 0, .48), rgba(0, 0, 0, .82));
+      pointer-events: none;
+    }
+
+    .members-login {
+      position: relative;
+      width: min(100%, 520px);
+      padding: 30px;
+      border: 1px solid rgba(255, 241, 207, .28);
+      border-radius: 8px;
+      background: rgba(7, 7, 6, .92);
+      box-shadow: 10px 12px 0 rgba(0, 0, 0, .48);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    .brand img {
+      width: 72px;
+      height: 72px;
+      object-fit: contain;
+      filter: drop-shadow(0 5px 0 rgba(0, 0, 0, .4));
+    }
+
+    .brand-text {
+      min-width: 0;
+    }
+
+    .eyebrow {
+      margin: 0 0 5px;
+      color: #ff6a19;
+      font-size: 13px;
+      font-weight: 950;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: Impact, Haettenschweiler, "Arial Black", sans-serif;
+      font-size: 48px;
+      line-height: .95;
+      letter-spacing: .02em;
+      text-transform: uppercase;
+    }
+
+    .intro {
+      margin: 0 0 22px;
+      color: rgba(255, 241, 207, .84);
+      font-size: 16px;
+      line-height: 1.6;
+      font-weight: 800;
+    }
+
+    .login-form {
+      display: grid;
+      gap: 14px;
+    }
+
+    label {
+      display: grid;
+      gap: 7px;
+      color: rgba(255, 241, 207, .8);
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
+    input {
+      width: 100%;
+      min-height: 48px;
+      border: 1px solid rgba(255, 241, 207, .24);
+      border-radius: 5px;
+      padding: 0 14px;
+      background: rgba(255, 241, 207, .08);
+      color: #fff1cf;
+      font: inherit;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: #ff6a19;
+      box-shadow: 0 0 0 3px rgba(255, 106, 25, .2);
+    }
+
+    .actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 6px;
+    }
+
+    button,
+    .register {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 0;
+      border-radius: 5px;
+      padding: 0 14px;
+      color: #111;
+      font-weight: 950;
+      text-decoration: none;
+      cursor: pointer;
+      box-shadow: 4px 5px 0 rgba(0, 0, 0, .45);
+    }
+
+    .login {
+      background: #f05a1c;
+    }
+
+    .register {
+      background: #fff1cf;
+    }
+
+    .message {
+      display: none;
+      margin-top: 18px;
+      padding: 13px 14px;
+      border: 1px solid rgba(255, 106, 25, .42);
+      border-radius: 5px;
+      background: rgba(240, 90, 28, .14);
+      color: #fff1cf;
+      font-weight: 900;
+      line-height: 1.55;
+    }
+
+    .message.show {
+      display: block;
+    }
+
+    .home {
+      display: inline-flex;
+      margin-top: 22px;
+      color: rgba(255, 241, 207, .72);
+      font-size: 13px;
+      font-weight: 900;
+      text-decoration: none;
+    }
+
+    .home:hover,
+    .home:focus-visible {
+      color: #ff6a19;
+    }
+
+    @media (max-width: 520px) {
+      body {
+        padding: 14px;
+      }
+
+      .members-login {
+        padding: 22px 16px;
+        box-shadow: 6px 7px 0 rgba(0, 0, 0, .48);
+      }
+
+      .brand {
+        align-items: flex-start;
+        gap: 11px;
+      }
+
+      .brand img {
+        width: 58px;
+        height: 58px;
+      }
+
+      h1 {
+        font-size: 34px;
+      }
+
+      .intro {
+        font-size: 14px;
+      }
+
+      .actions {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="members-login" aria-labelledby="membersTitle">
+    <div class="brand">
+      <img src="images/whitelogo.png" alt="APGU JAM SALON" />
+      <div class="brand-text">
+        <p class="eyebrow">Members Only</p>
+        <h1 id="membersTitle">Login</h1>
+      </div>
+    </div>
+
+    <p class="intro">
+      Member access is available after registration.<br />
+      멤버 전용 공간은 가입 후 이용할 수 있습니다.
+    </p>
+
+    <form class="login-form" id="membersForm">
+      <label>
+        Email / 이메일
+        <input type="email" autocomplete="email" placeholder="you@example.com" />
+      </label>
+
+      <label>
+        Password / 비밀번호
+        <input type="password" autocomplete="current-password" placeholder="Password" />
+      </label>
+
+      <div class="actions">
+        <button class="login" type="submit">Log In / 로그인</button>
+        <a class="register" id="registerLink" href="#">Sign Up / Register</a>
+      </div>
+    </form>
+
+    <div class="message" id="loginMessage" role="status" aria-live="polite">
+      No registered user found. Please register first.<br />
+      등록된 사용자가 없습니다. 먼저 가입해 주세요.
+    </div>
+
+    <a class="home" href="index.html#members">Close / 닫기</a>
+  </main>
+
+  <script src="links.config.js"></script>
+  <script>
+    const form = document.getElementById("membersForm");
+    const message = document.getElementById("loginMessage");
+    const registerLink = document.getElementById("registerLink");
+    const fallbackSignup = "https://docs.google.com/forms/d/1JHAvNYFwoXc_947NcUjbCVdcxG69aTzp2p4lxzRChPI/edit";
+    const signupUrl = (window.AP_GU_LINKS && window.AP_GU_LINKS.signup) || fallbackSignup;
+
+    function normalizeUrl(url) {
+      if (!url || url === "#") return fallbackSignup;
+      if (/^(https?:|mailto:|tel:)/.test(url)) return url;
+      if (/^www\./.test(url)) return `https://${url}`;
+      return url;
+    }
+
+    registerLink.href = normalizeUrl(signupUrl);
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      message.classList.add("show");
+    });
+
+  </script>
+</body>
+</html>

@@ -565,7 +565,7 @@
     .video-modal {
       position: fixed;
       inset: 0;
-      z-index: 80;
+      z-index: 82;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -616,6 +616,144 @@
       background: #000;
     }
 
+    .event-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 80;
+      display: grid;
+      place-items: center;
+      padding: 18px;
+      background: rgba(0, 0, 0, .84);
+    }
+
+    .event-modal[hidden] {
+      display: none;
+    }
+
+    .event-modal-dialog {
+      position: relative;
+      width: min(92vw, 720px);
+      padding: 18px;
+      border: 1px solid rgba(255, 241, 207, .24);
+      border-radius: 14px;
+      background: rgba(7, 7, 6, .96);
+      box-shadow: 10px 12px 0 rgba(0, 0, 0, .48);
+    }
+
+    .event-modal-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 40px;
+      height: 40px;
+      z-index: 2;
+      border: 0;
+      border-radius: 999px;
+      background: rgba(0, 0, 0, .72);
+      color: #fff1cf;
+      font-size: 24px;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .event-modal-close:focus-visible,
+    .event-slide-link:focus-visible,
+    .event-carousel-button:focus-visible {
+      outline: 3px solid #ff6a19;
+      outline-offset: 2px;
+    }
+
+    .event-carousel {
+      position: relative;
+      overflow: hidden;
+      border-radius: 9px;
+      background: #000;
+    }
+
+    .event-slide-link {
+      display: block;
+      min-height: 260px;
+      background: #000;
+    }
+
+    .event-slide-link img {
+      display: block;
+      width: 100%;
+      max-height: min(72vh, 680px);
+      object-fit: contain;
+      background: #000;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    .event-carousel-button {
+      position: absolute;
+      top: 50%;
+      width: 42px;
+      height: 42px;
+      border: 0;
+      border-radius: 999px;
+      transform: translateY(-50%);
+      background: rgba(255, 241, 207, .9);
+      color: #111;
+      font-size: 28px;
+      font-weight: 950;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .event-carousel-prev {
+      left: 12px;
+    }
+
+    .event-carousel-next {
+      right: 12px;
+    }
+
+    .event-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .event-dot {
+      width: 9px;
+      height: 9px;
+      border: 0;
+      border-radius: 999px;
+      padding: 0;
+      background: rgba(255, 241, 207, .42);
+      cursor: pointer;
+    }
+
+    .event-dot.is-active {
+      width: 28px;
+      background: #ff6a19;
+    }
+
+    @media (max-width: 520px) {
+      .event-modal {
+        padding: 12px;
+      }
+
+      .event-modal-dialog {
+        padding: 12px;
+        border-radius: 10px;
+        box-shadow: 6px 7px 0 rgba(0, 0, 0, .48);
+      }
+
+      .event-slide-link {
+        min-height: 220px;
+      }
+
+      .event-carousel-button {
+        width: 36px;
+        height: 36px;
+        font-size: 24px;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -631,7 +769,7 @@
         <a href="#" data-scroll="apply">APPLY</a>
         <a href="#" data-scroll="clip">CLIP</a>
         <a href="#" data-scroll="faq">FAQ</a>
-        <a href="#" data-link="event">EVENT</a>
+        <a href="#" data-scroll="event">EVENT</a>
         <a href="#" data-scroll="members">MEMBERS ONLY</a>
       </nav>
 
@@ -694,7 +832,7 @@
       <a href="#" data-scroll="apply">APPLY</a>
       <a href="#" data-scroll="clip">CLIP</a>
       <a href="#" data-scroll="faq">FAQ</a>
-      <a href="#" data-link="event">EVENT</a>
+      <a href="#" data-scroll="event">EVENT</a>
       <a href="#" data-scroll="members">MEMBERS ONLY</a>
       <button class="menu-close" type="button">CLOSE</button>
     </nav>
@@ -709,6 +847,19 @@
       </video>
     </div>
   </div>
+  <div class="event-modal" id="eventModal" role="dialog" aria-modal="true" aria-label="Event details" hidden>
+    <div class="event-modal-dialog">
+      <button class="event-modal-close" id="eventModalClose" type="button" aria-label="Close event popup">X</button>
+      <div class="event-carousel">
+        <a class="event-slide-link" id="eventSlideLink" href="#" aria-label="Open event application form">
+          <img id="eventSlideImage" src="images/event1.png" alt="APGU JAM SALON event" />
+        </a>
+        <button class="event-carousel-button event-carousel-prev" id="eventPrev" type="button" aria-label="Previous event image">‹</button>
+        <button class="event-carousel-button event-carousel-next" id="eventNext" type="button" aria-label="Next event image">›</button>
+      </div>
+      <div class="event-dots" id="eventDots" aria-label="Event image selector"></div>
+    </div>
+  </div>
 
   <script src="links.config.js"></script>
   <script>
@@ -721,6 +872,20 @@
     const videoModal = document.getElementById("videoModal");
     const videoModalClose = document.getElementById("videoModalClose");
     const videoModalPlayer = document.getElementById("videoModalPlayer");
+    const eventModal = document.getElementById("eventModal");
+    const eventModalClose = document.getElementById("eventModalClose");
+    const eventSlideLink = document.getElementById("eventSlideLink");
+    const eventSlideImage = document.getElementById("eventSlideImage");
+    const eventPrev = document.getElementById("eventPrev");
+    const eventNext = document.getElementById("eventNext");
+    const eventDots = document.getElementById("eventDots");
+    const eventImages = [
+      "images/event1.png",
+      "images/event2.png",
+      "images/event3.png"
+    ];
+    let eventSlideIndex = 0;
+    let eventAutoplay = 0;
     const sectionOffsets = {
       home: 0,
       about: 0.22,
@@ -787,15 +952,48 @@
       }
     });
 
+    applyOutboundLink(eventSlideLink, links.event);
+
+    eventImages.forEach((_, index) => {
+      const dot = document.createElement("button");
+      dot.className = "event-dot";
+      dot.type = "button";
+      dot.setAttribute("aria-label", `Show event image ${index + 1}`);
+      dot.addEventListener("click", () => {
+        renderEventSlide(index);
+        startEventAutoplay();
+      });
+      eventDots.appendChild(dot);
+    });
+
+    function scrollToSection(section, behavior = "smooth") {
+      const offset = sectionOffsets[section];
+      if (typeof offset !== "number") return;
+      const headerOffset = window.matchMedia("(min-width: 981px)").matches ? 76 : 64;
+      const targetY = page.offsetTop + (page.offsetHeight * offset) - headerOffset;
+      setMenu(false);
+      window.scrollTo({ top: targetY, behavior });
+    }
+
+    function scrollToHashSection() {
+      const section = window.location.hash.replace("#", "");
+      if (!section) return;
+      const poster = document.querySelector(".poster");
+      const scroll = () => scrollToSection(section, "auto");
+
+      if (poster && !poster.complete) {
+        window.addEventListener("load", scroll, { once: true });
+        return;
+      }
+
+      window.requestAnimationFrame(scroll);
+    }
+
     document.querySelectorAll("[data-scroll]").forEach((element) => {
       element.addEventListener("click", (event) => {
         event.preventDefault();
-        const offset = sectionOffsets[element.dataset.scroll];
-        if (typeof offset !== "number") return;
-        const headerOffset = window.matchMedia("(min-width: 981px)").matches ? 76 : 64;
-        const targetY = page.offsetTop + (page.offsetHeight * offset) - headerOffset;
-        setMenu(false);
-        window.scrollTo({ top: targetY, behavior: "smooth" });
+        const section = element.dataset.scroll;
+        scrollToSection(section);
       });
     });
 
@@ -844,6 +1042,34 @@
       videoModalPlayer.currentTime = 0;
     }
 
+    function renderEventSlide(index) {
+      eventSlideIndex = (index + eventImages.length) % eventImages.length;
+      eventSlideImage.src = eventImages[eventSlideIndex];
+      eventSlideImage.alt = `APGU JAM SALON event ${eventSlideIndex + 1}`;
+
+      eventDots.querySelectorAll(".event-dot").forEach((dot, dotIndex) => {
+        dot.classList.toggle("is-active", dotIndex === eventSlideIndex);
+        dot.setAttribute("aria-current", dotIndex === eventSlideIndex ? "true" : "false");
+      });
+    }
+
+    function startEventAutoplay() {
+      window.clearInterval(eventAutoplay);
+      eventAutoplay = window.setInterval(() => renderEventSlide(eventSlideIndex + 1), 2600);
+    }
+
+    function setEventModal(open) {
+      eventModal.hidden = !open;
+
+      if (open) {
+        renderEventSlide(0);
+        startEventAutoplay();
+        return;
+      }
+
+      window.clearInterval(eventAutoplay);
+    }
+
     async function attemptVideoAutoplay() {
       videoModalPlayer.muted = true;
       try {
@@ -856,9 +1082,22 @@
     menuToggle.addEventListener("click", () => setMenu(menu.hidden));
     menuClose.addEventListener("click", () => setMenu(false));
     videoModalClose.addEventListener("click", () => setVideoModal(false));
+    eventModalClose.addEventListener("click", () => setEventModal(false));
+    eventPrev.addEventListener("click", () => {
+      renderEventSlide(eventSlideIndex - 1);
+      startEventAutoplay();
+    });
+    eventNext.addEventListener("click", () => {
+      renderEventSlide(eventSlideIndex + 1);
+      startEventAutoplay();
+    });
 
     videoModal.addEventListener("click", (event) => {
       if (event.target === videoModal) setVideoModal(false);
+    });
+
+    eventModal.addEventListener("click", (event) => {
+      if (event.target === eventModal) setEventModal(false);
     });
 
     menu.querySelectorAll("a").forEach((link) => {
@@ -868,6 +1107,7 @@
     document.addEventListener("keydown", (event) => {
       if (event.key === "Escape") setMenu(false);
       if (event.key === "Escape" && !videoModal.hidden) setVideoModal(false);
+      if (event.key === "Escape" && !eventModal.hidden) setEventModal(false);
     });
 
     document.addEventListener("click", (event) => {
@@ -877,18 +1117,23 @@
     });
 
     function initializeVideoModal() {
+      setEventModal(true);
       setVideoModal(true);
       attemptVideoAutoplay();
     }
 
-    if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", initializeVideoModal, { once: true });
-    } else {
-      initializeVideoModal();
+    scrollToHashSection();
+
+    if (!window.location.hash) {
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initializeVideoModal, { once: true });
+      } else {
+        initializeVideoModal();
+      }
     }
 
     window.addEventListener("pageshow", () => {
-      if (videoModal.hidden) initializeVideoModal();
+      if (!window.location.hash && videoModal.hidden) initializeVideoModal();
     });
   </script>
 </body>
