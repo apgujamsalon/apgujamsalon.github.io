@@ -33,7 +33,6 @@
     <circle cx="321" cy="97" r="78" fill="#ff6a19" opacity=".14"/>
     <g transform="rotate(-8 316 73)">
       <rect x="260" y="50" width="112" height="45" rx="12" fill="#111"/>
-      <path d="M260 95L279 95L260 113Z" fill="#111"/>
       <text class="price" x="316" y="81" fill="#fff1cf" text-anchor="middle">29만원</text>
     </g>
     <text class="title" x="66" y="151" fill="#173622">STANDARD</text>
@@ -51,7 +50,6 @@
     <circle cx="499" cy="111" r="82" fill="#fff1cf" opacity=".22"/>
     <g transform="rotate(8 704 69)">
       <rect x="648" y="46" width="112" height="45" rx="12" fill="#111"/>
-      <path d="M760 91L741 91L760 109Z" fill="#111"/>
       <text class="price" x="704" y="77" fill="#fff1cf" text-anchor="middle">34만원</text>
     </g>
     <text class="title" x="454" y="148" fill="#111">PREMIUM</text>
@@ -69,7 +67,6 @@
     <circle cx="1095" cy="96" r="78" fill="#fff1cf" opacity=".14"/>
     <g transform="rotate(-8 1094 73)">
       <rect x="1038" y="50" width="112" height="45" rx="12" fill="#fff1cf"/>
-      <path d="M1038 95L1057 95L1038 113Z" fill="#fff1cf"/>
       <text class="price" x="1094" y="81" fill="#111" text-anchor="middle">문의</text>
     </g>
     <text class="title" x="842" y="151" fill="#fff1cf">ECONOMY</text>
