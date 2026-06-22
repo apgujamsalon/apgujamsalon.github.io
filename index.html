@@ -383,6 +383,78 @@
     .youtube-link { left: 18.95%; top: 96.36%; width: 3.65%; height: 1.75%; }
     .spotify-link { left: 24.45%; top: 96.36%; width: 3.45%; height: 1.75%; }
 
+    .program-rocker-trial {
+      position: absolute;
+      left: 18.55%;
+      top: 54.52%;
+      width: 62.7%;
+      height: 11.38%;
+      z-index: 4;
+      padding: clamp(6px, .9vw, 12px);
+      border: 2px solid rgba(255, 241, 207, .24);
+      border-radius: 7px;
+      background:
+        radial-gradient(circle at 11% 14%, rgba(255, 106, 25, .22), transparent 22%),
+        radial-gradient(circle at 88% 82%, rgba(28, 117, 64, .28), transparent 22%),
+        linear-gradient(135deg, rgba(2, 2, 2, .98), rgba(10, 10, 8, .98)),
+        #050505;
+      box-shadow: 9px 10px 0 rgba(0, 0, 0, .55);
+    }
+
+    .program-rocker-window {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .program-cards-image {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: fill;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    .program-card-hotspot {
+      position: absolute;
+      top: 9%;
+      width: 29.5%;
+      height: 82%;
+      z-index: 2;
+      border-radius: 12px;
+      background: transparent;
+      -webkit-tap-highlight-color: rgba(255, 106, 25, .25);
+    }
+
+    .program-card-hotspot:focus-visible {
+      outline: 3px solid #ff6a19;
+      outline-offset: 2px;
+    }
+
+    .program-card-standard { left: 2.5%; }
+    .program-card-premium { left: 35.15%; }
+    .program-card-economy { left: 67.8%; }
+
+    @media (max-width: 620px) {
+      .program-card-hotspot {
+        top: 8.5%;
+        height: 83%;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .program-rocker-trial {
+        left: 18.25%;
+        top: 54.56%;
+        width: 63.05%;
+        height: 11.5%;
+        padding: 5px;
+      }
+
+    }
+
     .email-patch {
       position: absolute;
       left: 37.60%;
@@ -794,6 +866,14 @@
     </section>
     <img class="poster" src="images/mobileweb-cropped.png" alt="APGU JAM SALON 8 week band project poster" draggable="false" />
     <div class="logo-cover" aria-hidden="true"></div>
+    <section class="program-rocker-trial" aria-label="Program plan gallery trial">
+      <div class="program-rocker-window">
+        <img class="program-cards-image" src="images/program-cards-3plans.svg" alt="Standard, Premium, and Economy program plans" draggable="false" />
+        <a class="program-card-hotspot program-card-standard" href="#" data-link="apply" aria-label="Apply for Standard plan"></a>
+        <a class="program-card-hotspot program-card-premium" href="#" data-link="apply" aria-label="Apply for Premium plan"></a>
+        <a class="program-card-hotspot program-card-economy" href="#" data-link="apply" aria-label="Apply for Economy plan"></a>
+      </div>
+    </section>
 
     <button class="hotspot logo-home" type="button" aria-label="Back to top"></button>
     <div class="mobile-control-mask signup-mask" aria-hidden="true"></div>

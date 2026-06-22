@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 468" role="img" aria-label="APGU JAM SALON program plans: Standard, Premium, Economy">
+  <defs>
+    <pattern id="paperLines" width="26" height="26" patternUnits="userSpaceOnUse" patternTransform="rotate(-7)">
+      <rect width="26" height="26" fill="transparent"/>
+      <path d="M0 3H26" stroke="#111" stroke-opacity=".08" stroke-width="2"/>
+    </pattern>
+    <pattern id="darkLines" width="26" height="26" patternUnits="userSpaceOnUse" patternTransform="rotate(8)">
+      <rect width="26" height="26" fill="transparent"/>
+      <path d="M0 3H26" stroke="#fff1cf" stroke-opacity=".08" stroke-width="2"/>
+    </pattern>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="9" dy="10" stdDeviation="0" flood-color="#000" flood-opacity=".42"/>
+    </filter>
+    <style>
+      .title { font-family: Impact, Haettenschweiler, 'Arial Black', sans-serif; font-size: 56px; letter-spacing: 1px; }
+      .price { font-family: Arial, Helvetica, sans-serif; font-size: 27px; font-weight: 900; }
+      .item { font-family: Arial, Helvetica, sans-serif; font-size: 32px; font-weight: 900; }
+      .item-small { font-size: 30px; }
+      .caption { font-family: Arial, Helvetica, sans-serif; font-size: 19px; font-weight: 900; letter-spacing: 2px; }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="1200" height="468" rx="24" fill="#050505"/>
+  <circle cx="106" cy="95" r="140" fill="#ff6a19" opacity=".18"/>
+  <circle cx="1068" cy="396" r="156" fill="#1c7540" opacity=".22"/>
+  <circle cx="606" cy="90" r="96" fill="#fff1cf" opacity=".05"/>
+  <path d="M24 400c126-34 254-38 394-3 112 28 234 22 354-11 139-39 270-28 405 18" fill="none" stroke="#fff1cf" stroke-opacity=".08" stroke-width="5"/>
+  <text class="caption" x="600" y="34" fill="#fff1cf" opacity=".46" text-anchor="middle">8 WEEK BAND PROJECT PROGRAMS</text>
+
+  <g filter="url(#shadow)" transform="rotate(-1.1 205 238)">
+    <rect x="40" y="62" width="344" height="346" rx="24" fill="#f3e8c9"/>
+    <rect x="40" y="62" width="344" height="346" rx="24" fill="url(#paperLines)"/>
+    <circle cx="321" cy="97" r="78" fill="#ff6a19" opacity=".14"/>
+    <g transform="rotate(-8 316 73)">
+      <rect x="260" y="50" width="112" height="45" rx="12" fill="#111"/>
+      <path d="M260 95L279 95L260 113Z" fill="#111"/>
+      <text class="price" x="316" y="81" fill="#fff1cf" text-anchor="middle">29만원</text>
+    </g>
+    <text class="title" x="66" y="151" fill="#173622">STANDARD</text>
+    <line x1="66" y1="176" x2="358" y2="176" stroke="#111" stroke-opacity=".22" stroke-width="4"/>
+    <text class="item" x="72" y="220" fill="#111">★ 네트워킹 참여</text>
+    <text class="item" x="72" y="260" fill="#111">★ 8주 밴드 프로젝트</text>
+    <text class="item" x="72" y="300" fill="#111">★ 주 1회 리허설</text>
+    <text class="item item-small" x="72" y="340" fill="#111">★ 팀 매칭 · 최종 공연</text>
+    <text class="title" x="287" y="376" fill="#111" opacity=".12" transform="rotate(-12 287 376)">♪</text>
+  </g>
+
+  <g filter="url(#shadow)" transform="rotate(1.1 600 236)">
+    <rect x="428" y="58" width="344" height="346" rx="24" fill="#f05a1c"/>
+    <rect x="428" y="58" width="344" height="346" rx="24" fill="url(#darkLines)" opacity=".76"/>
+    <circle cx="499" cy="111" r="82" fill="#fff1cf" opacity=".22"/>
+    <g transform="rotate(8 704 69)">
+      <rect x="648" y="46" width="112" height="45" rx="12" fill="#111"/>
+      <path d="M760 91L741 91L760 109Z" fill="#111"/>
+      <text class="price" x="704" y="77" fill="#fff1cf" text-anchor="middle">34만원</text>
+    </g>
+    <text class="title" x="454" y="148" fill="#111">PREMIUM</text>
+    <line x1="454" y1="173" x2="746" y2="173" stroke="#111" stroke-opacity=".32" stroke-width="4"/>
+    <text class="item item-small" x="460" y="217" fill="#111">★ Standard 전체 포함</text>
+    <text class="item" x="460" y="257" fill="#111">★ 추가 레슨</text>
+    <text class="item item-small" x="460" y="297" fill="#111">★ 공연 영상 클립</text>
+    <text class="item item-small" x="460" y="337" fill="#111">★ 믹스/마스터 음원</text>
+    <text class="title" x="684" y="376" fill="#111" opacity=".16" transform="rotate(10 684 376)">★</text>
+  </g>
+
+  <g filter="url(#shadow)" transform="rotate(-.7 993 238)">
+    <rect x="816" y="62" width="344" height="346" rx="24" fill="#123d26"/>
+    <rect x="816" y="62" width="344" height="346" rx="24" fill="url(#darkLines)" opacity=".95"/>
+    <circle cx="1095" cy="96" r="78" fill="#fff1cf" opacity=".14"/>
+    <g transform="rotate(-8 1094 73)">
+      <rect x="1038" y="50" width="112" height="45" rx="12" fill="#fff1cf"/>
+      <path d="M1038 95L1057 95L1038 113Z" fill="#fff1cf"/>
+      <text class="price" x="1094" y="81" fill="#111" text-anchor="middle">문의</text>
+    </g>
+    <text class="title" x="842" y="151" fill="#fff1cf">ECONOMY</text>
+    <line x1="842" y1="176" x2="1134" y2="176" stroke="#fff1cf" stroke-opacity=".28" stroke-width="4"/>
+    <text class="item item-small" x="848" y="220" fill="#fff1cf">★ Venue usage only</text>
+    <text class="item" x="848" y="260" fill="#fff1cf">★ 공간 이용 전용</text>
+    <text class="item" x="848" y="300" fill="#fff1cf">★ No classes</text>
+    <text class="item" x="848" y="340" fill="#fff1cf">★ 수업 미포함</text>
+    <text class="title" x="1078" y="376" fill="#fff1cf" opacity=".13" transform="rotate(-12 1078 376)">♫</text>
+  </g>
+</svg>
