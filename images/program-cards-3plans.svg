@@ -20,7 +20,7 @@
     </style>
   </defs>
 
-  <rect x="0" y="0" width="1200" height="468" rx="24" fill="#050505"/>
+  <rect x="0" y="0" width="1200" height="468" fill="#050505"/>
   <circle cx="106" cy="95" r="140" fill="#ff6a19" opacity=".18"/>
   <circle cx="1068" cy="396" r="156" fill="#1c7540" opacity=".22"/>
   <circle cx="606" cy="90" r="96" fill="#fff1cf" opacity=".05"/>
